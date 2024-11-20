@@ -1,11 +1,9 @@
 package com.example.ccsd.Gallery;
 
-import java.util.Date;
-
 public class gallery {
     private String images;
     private String description;
-    private Date date;
+    //private Date date;
 
     public String getImages(){
         return images;
@@ -23,13 +21,13 @@ public class gallery {
         this.description = newDescription;
     }
 
-    public Date getDate(){
-        return date;
-    }
+    // public Date getDate(){
+    //     return date;
+    // }
 
-    public void setDate(String newDate){
-        this.images = newDate;
-    }
+    // public void setDate(String newDate){
+    //     this.images = newDate;
+    // }
 
 
     // public static void main(String[] args) {
