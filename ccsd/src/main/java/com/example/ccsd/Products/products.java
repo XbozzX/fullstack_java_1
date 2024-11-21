@@ -24,7 +24,8 @@ public class products {
     //Constructors
     public products() {}
 
-    public products(String product, String title, String slug, Date publishingDate, String status, String productPlace, String tags, String description, String longDescription) {
+    public products(String id, String product, String title, String slug, Date publishingDate, String status, String productPlace, String tags, String description, String longDescription) {
+        this.id = id;
         this.product = product;
         this.title = title;
         this.slug = slug;
@@ -38,6 +39,11 @@ public class products {
 
 
     // setter
+
+    public void setId(String id){
+        this.id = id;
+    }
+
     public void setProdcut(String product) {
         this.product = product;
     }
@@ -50,7 +56,7 @@ public class products {
          this.slug = slug;
     }
 
-    public void setPublishingData(Date publishingDate){
+    public void setPublishingDate(Date publishingDate){
         this.publishingDate = publishingDate;
     }
 
@@ -76,7 +82,11 @@ public class products {
 
 
     // getter
-    public String getProdcut() {
+    public String getId() {
+        return this.id;
+    }
+
+    public String getProduct() {
         return this.product;
     }
 
@@ -88,7 +98,7 @@ public class products {
         return this.slug;
     }
 
-    public Date getPublishingData(){
+    public Date getPublishingDate(){
         return this.publishingDate;
     }
 
