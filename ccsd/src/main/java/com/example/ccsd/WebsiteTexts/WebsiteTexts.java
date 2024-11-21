@@ -6,23 +6,22 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class WebsiteTexts {
   @Id
   private String id;
-  private String text;
-  private String description;
-  private String caption;
   private String title;
   private String subtitle;
-  private String about;
+  private String description;
+  private String caption;
+
 
   public WebsiteTexts(){}
 
-  public WebsiteTexts(String id,String text, String description, String caption, String title, String subtitle, String about){
+  public WebsiteTexts(String id,String title, String subtitle, String description, String caption){
     this.id = id;
-    this.text = text;
-    this.description = description;
-    this.caption = caption;
     this.title = title;
     this.subtitle = subtitle;
-    this.about = about;
+    this.description = description;
+    this.caption = caption;
+
+
   }
 
   public String getId() {
@@ -33,12 +32,20 @@ public void setId(String id) {
     this.id = id;
 }
 
-  public String getText(){
-    return text;
-  }
+public String getTitle(){
+  return title;
+}
 
-  public void setText(String text) {
-    this.text = text;
+public void setTitle(String title) {
+  this.title = title;
+}
+
+public String getSubtitle(){
+  return subtitle;
+}
+
+public void setSubtitle(String subtitle) {
+  this.subtitle = subtitle;
 }
 
   public String getDescription(){
@@ -57,23 +64,7 @@ public void setId(String id) {
     this.caption = caption;
 }
 
-  public String getTitle(){
-    return title;
-  }
+ 
 
-  public void setTitle(String title) {
-    this.title = title;
-}
-
-  public String getSubtitle(){
-    return subtitle;
-  }
-
-  public void setSubtitle(String subtitle) {
-    this.subtitle = subtitle;
-}
-
-  public String getAbout(){
-    return about;
-  }
+ 
 }
