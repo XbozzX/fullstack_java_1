@@ -28,7 +28,7 @@ public class WebsiteTexts {
   public String getAbout(){
     return about;
   }
-    // public static void main(String[]args) throws IOException{}
+    public static void main(String[]args) throws IOException{}
     
   
 
