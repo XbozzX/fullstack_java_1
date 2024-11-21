@@ -39,15 +39,8 @@ const WebsiteComponentsAdmin = () =>{
             <Box gridColumn="span 4" backgroundColor = {colors.primary[400]} display="flex" alignItems="center" justifyContent="center">
                 <Link href="/website-slides-admin"><ThreeGridBoxImage 
                     image={require("../../../assets/images/website_slides.jpg")}
-                    title="Website Slides"
-                    subtitle="you Can change Website Slides"
-                /></Link>
-            </Box>
-            <Box gridColumn="span 4" backgroundColor = {colors.primary[400]} display="flex" alignItems="center" justifyContent="center">
-                <Link href="/website-slides-admin"><ThreeGridBoxImage 
-                    image={require("../../../assets/images/website_slides.jpg")}
-                    title="Website Videos"
-                    subtitle="you Can change Website Videos"
+                    title="Website Gallery"
+                    subtitle="you Can change Website Gallery"
                 /></Link>
             </Box>
             </Box>
