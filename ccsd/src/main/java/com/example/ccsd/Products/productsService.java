@@ -37,10 +37,11 @@ public class productsService {
             // Get from database
 
             products Products = ProductsOpt.get();
-            Products.setProdcut(ProductsDetail.getProdcut());
+            Products.setId(ProductsDetail.getId());
+            Products.setProdcut(ProductsDetail.getProduct());
             Products.setTitle(ProductsDetail.getTitle());
             Products.setSlug(ProductsDetail.getSlug());
-            Products.setPublishingData(ProductsDetail.getPublishingData());
+            Products.setPublishingDate(ProductsDetail.getPublishingDate());
             Products.setStatus(ProductsDetail.getStatus());
             Products.setProductPlace(ProductsDetail.getProductPlace());
             Products.setTags(ProductsDetail.getTags());

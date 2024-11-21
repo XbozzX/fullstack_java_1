@@ -33,8 +33,8 @@ public class productsController {
     }
 
     @PostMapping
-    public products addProducts(@RequestBody products book) {
-        return productsService.addProducts(book);
+    public products addProducts(@RequestBody products Products) {
+        return productsService.addProducts(Products);
     }
 
     @PutMapping("/{id}")
