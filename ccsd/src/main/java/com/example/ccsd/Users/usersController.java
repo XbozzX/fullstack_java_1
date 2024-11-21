@@ -18,12 +18,21 @@ public class usersController {
         return usersService.getAllUsers();
     }
 
+    // get user by id 
     @GetMapping("/{id}")
     public ResponseEntity<users> getUserById(@PathVariable String UserId) {
         return usersService.getUserById(UserId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+     // get user by email
+     @GetMapping("/{id}")
+     public ResponseEntity<users> getUserByEmail(@PathVariable String email) {
+         return usersService.getUserByEmail(email)
+                 .map(ResponseEntity::ok)
+                 .orElse(ResponseEntity.notFound().build());
+     }
 
     @PostMapping
     public users addUser(@RequestBody users users) {
@@ -44,7 +53,6 @@ public class usersController {
         usersService.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }
-
-
+    
     
 }
