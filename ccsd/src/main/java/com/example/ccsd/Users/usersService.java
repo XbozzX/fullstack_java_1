@@ -23,6 +23,11 @@ public class usersService {
         return usersRepository.findById(userId);
     }
 
+    //getting single user by email
+    public Optional<users> getUserByEmail(String email) {
+        return usersRepository.findById(email);
+    }
+
 
 
     // Creating new data in repository
@@ -48,6 +53,8 @@ public class usersService {
         }
         return null;
     }
+
+
 
     // Deleting user 
     public void deleteUser(String id) {
