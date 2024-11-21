@@ -76,4 +76,3 @@ public void setId(String id) {
   public String getAbout(){
     return about;
 
-}
