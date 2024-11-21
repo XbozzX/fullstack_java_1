@@ -75,14 +75,5 @@ public void setId(String id) {
 
   public String getAbout(){
     return about;
-  }
 
-  public void setAbout(String about) {
-    this.about = about;
-}
-    
-  
-
-   
-    
 }
