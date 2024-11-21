@@ -37,7 +37,7 @@ const WebsiteComponentsAdmin = () =>{
                 /></Link>
             </Box>
             <Box gridColumn="span 4" backgroundColor = {colors.primary[400]} display="flex" alignItems="center" justifyContent="center">
-                <Link href="/website-slides-admin"><ThreeGridBoxImage 
+                <Link href="/website-image-gallery"><ThreeGridBoxImage 
                     image={require("../../../assets/images/website_slides.jpg")}
                     title="Website Gallery"
                     subtitle="you Can change Website Gallery"
