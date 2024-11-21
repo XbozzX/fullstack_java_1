@@ -33,10 +33,11 @@ public class WebsiteTextsService {
             // Get from database
 
             WebsiteTexts websiteTexts = textOpt.get();
-            websiteTexts.setText(textDetails.getText());
+            websiteTexts.setTitle(textDetails.getTitle());
+            websiteTexts.setSubtitle(textDetails.getSubtitle());
             websiteTexts.setDescription(textDetails.getDescription());
             websiteTexts.setCaption(textDetails.getCaption());
-            websiteTexts.setTitle(textDetails.getTitle());
+
             return websiteTextsRepository.save(websiteTexts);
         }
         return null;
