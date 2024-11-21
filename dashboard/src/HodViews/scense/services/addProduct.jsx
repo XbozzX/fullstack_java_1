@@ -24,7 +24,7 @@ const AddProduct = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [image, setImage] = useState(null);
-    const [postCategory, setPostCategory] = useState(""); // to store the selected category
+
     const [categories, setCategories] = useState([]); // to store the list of categories    
     const [postShortDescription, setPostShortDescription] = useState(null);
     const [tag, setTag] = useState(null);
@@ -57,10 +57,7 @@ const AddProduct = () => {
         setPlace(event.target.value);
       };
       
-      const handleCategoryChange = (event) => {
-        setPostCategory(event.target.value);
-      };
-      
+
 
     const handleImageChange = (event) => {
         const selectedImage = event.target.files[0];
@@ -86,16 +83,7 @@ const AddProduct = () => {
         }
       }
 
-      useEffect(() => {
-        GetItemsAdmin.getCatAdmin()
-          .then((result) => {
-            const catData = result.data || [];
-            setCategories(catData);
-          })
-          .catch((error) => {
-            console.error("Error fetching category data:", error);
-          });
-      }, []);
+
       
 
   return (

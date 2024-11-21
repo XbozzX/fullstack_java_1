@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 import SaveItemsAdmin from '../../saveItemAdmin';
-import GetItemsAdmin from '../../getItemAdmin';
+
 import Select from '@mui/material/Select';
 import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined';
 
@@ -24,7 +24,7 @@ const AddWebsiteText = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [image, setImage] = useState(null);
-    const [postCategory, setPostCategory] = useState(""); // to store the selected category
+
     const [place, setPlace] = useState(null);
     const [categories, setCategories] = useState([]); // to store the list of categories    
     const [postShortDescription, setPostShortDescription] = useState(null);
@@ -55,9 +55,7 @@ const AddWebsiteText = () => {
         setStatus(event.target.value);
       };
       
-      const handleCategoryChange = (event) => {
-        setPostCategory(event.target.value);
-      };
+
       
 
     const handleImageChange = (event) => {
@@ -69,7 +67,7 @@ const AddWebsiteText = () => {
         event.preventDefault(); // Prevent the default form submission behavior
       
         try {
-          const success = await SaveItemsAdmin.addBlogAdmin(postCategory, postShortDescription, tag, title, postSlug, content, status, date, image);
+          const success = await SaveItemsAdmin.addWebsiteTextAdmin( postShortDescription, tag, title, postSlug, content, status, date, image, place);
           
           if (success) {
             navigate("/website-components-admin");
@@ -84,16 +82,6 @@ const AddWebsiteText = () => {
         }
       }
 
-      useEffect(() => {
-        GetItemsAdmin.getCatAdmin()
-          .then((result) => {
-            const catData = result.data || [];
-            setCategories(catData);
-          })
-          .catch((error) => {
-            console.error("Error fetching category data:", error);
-          });
-      }, []);
       
 
   return (
