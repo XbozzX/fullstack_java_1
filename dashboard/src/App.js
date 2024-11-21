@@ -17,6 +17,8 @@ import BlogsAdmin from "./HodViews/scense/websites/bolgs";
 import AddBlog from "./HodViews/scense/websites/addBlog";
 import Services from "./HodViews/scense/services";
 import AddProduct from "./HodViews/scense/services/addProduct";
+import AddWebsiteText from "./HodViews/scense/websites/addWebsiteTexts";
+import AddWebsiteImage from "./HodViews/scense/websites/addWebsiteImage";
 
 
 
@@ -118,6 +120,22 @@ function App() {
         element={
           <HodViewsLayout>
             <WebsiteComponentsAdmin />
+          </HodViewsLayout>
+        }
+      />
+      <Route
+        path="/website-text-admin"
+        element={
+          <HodViewsLayout>
+            <AddWebsiteText />
+          </HodViewsLayout>
+        }
+      />
+      <Route
+        path="/website-image-admin"
+        element={
+          <HodViewsLayout>
+            <AddWebsiteImage />
           </HodViewsLayout>
         }
       />
