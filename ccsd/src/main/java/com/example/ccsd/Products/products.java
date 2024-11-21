@@ -1,12 +1,18 @@
 package com.example.ccsd.Products;
-
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+
+@Document(collection = "products")
 public class products {
     
     //field
+    @Id
+    private String id;
     private String product;
-    private String title;
+    private String title;   
     private String slug;
     private Date publishingDate;
     private String status;
@@ -14,6 +20,22 @@ public class products {
     private String tags;
     private String description;
     private String longDescription;
+
+    //Constructors
+    public products() {}
+
+    public products(String product, String title, String slug, Date publishingDate, String status, String productPlace, String tags, String description, String longDescription) {
+        this.product = product;
+        this.title = title;
+        this.slug = slug;
+        this.publishingDate = publishingDate;
+        this.status = status;
+        this.productPlace = productPlace;
+        this.tags = tags;
+        this.description = description;
+        this.longDescription = longDescription;
+    }
+
 
     // setter
     public void setProdcut(String product) {
@@ -28,7 +50,7 @@ public class products {
          this.slug = slug;
     }
 
-    public void setDate(Date publishingDate){
+    public void setPublishingData(Date publishingDate){
         this.publishingDate = publishingDate;
     }
 
@@ -66,7 +88,7 @@ public class products {
         return this.slug;
     }
 
-    public Date getDate(){
+    public Date getPublishingData(){
         return this.publishingDate;
     }
 
