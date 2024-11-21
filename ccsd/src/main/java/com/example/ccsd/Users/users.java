@@ -1,8 +1,12 @@
 package com.example.ccsd.Users;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "user")
 public class users {
-
+    @Id
+    private String userId;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -10,12 +14,27 @@ public class users {
     private String password;
     private String profPic;
 
-    public users(String firstName, String  lastName, String phoneNumber, String email, String password, String profPic){
+     // Constructors
+     public users() {}
+
+    public users(String userId, String firstName, String  lastName, String phoneNumber, String email, String password, String profPic){
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.profPic = profPic;
+    }
+
+    //getter user id
+    public String getUserId()
+    {
+        return userId;
+    }
+
+     // setter user id
+     public void setUserId(String userId){
+        this.userId = userId;
     }
 
      //getter first name
@@ -57,7 +76,7 @@ public class users {
            return email;
        }
    
-       // setter email (if email exist, then this.email, if not ("invalid email"))
+       // setter email
        public void setEmail(String email){
            this.email = email;
        }
@@ -68,34 +87,10 @@ public class users {
             return password;
         }
 
-        //setter password normal
+        //setter password
         public void setPassword(String password){
 
-
                 this.password = password;
-        
-
-        }
-    
-        // setter password registration
-        public void setPasswordReg(String password, String password2){
-
-            if(password2.equals(password) ){
-                this.password = password;
-            }
-            else{
-
-            }
-
-
-        }
-
-         // setter password sign in with database
-         public void setPasswordSignIn(String password){
-
-            // if(password == )
-
-            this.password = password;
 
         }
 
@@ -109,7 +104,7 @@ public class users {
      public void setProfPic(String profPic){
          this.profPic = profPic;
      }
-
+ 
 
     
 }
