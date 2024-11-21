@@ -17,7 +17,8 @@ public class gallery {
 
     public gallery(){}
 
-    public gallery(String title, String images, String text, String description, Date date){
+    public gallery(String id, String title, String images, String text, String description, Date date){
+        this.id = id;
         this.title = title;
         this.images = images;
         this.text = text;
@@ -31,47 +32,47 @@ public class gallery {
     }
 
     //setter method
-    public void setId(String newId){
-        this.id = newId;
+    public void setId(String id){
+        this.id = id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String newTitle){
-        this.title = newTitle;
+    public void setTitle(String title){
+        this.title = title;
     }
     public String getImages(){
         return images;
     }
 
-    public void setImages(String newImages){
-        this.images = newImages;
+    public void setImages(String images){
+        this.images = images;
     }
 
     public String getText(){
         return text;
     }
 
-    public void setText(String newText){
-        this.text = newText;
+    public void setText(String text){
+        this.text = text;
     }
 
     public String getDescription(){
         return description;
     }
 
-    public void setDescription(String newDescription){
-        this.description = newDescription;
+    public void setDescription(String description){
+        this.description = description;
     }
 
     public Date getDate(){
          return date;
      }
 
-     public void setDate(String newDate){
-         this.images = newDate;
+     public void setDate(Date date){
+         this.date = date;
   }
 }
 

@@ -39,8 +39,10 @@ public class galleryService {
             Gallery.setImages(GalleryDetails.getImages());
             Gallery.setText(GalleryDetails.getText());
             Gallery.setDescription(GalleryDetails.getDescription());
+            Gallery.setDate(GalleryDetails.getDate());
             return GalleryRepository.save(Gallery);
         }
+
         return null;
     }
 
