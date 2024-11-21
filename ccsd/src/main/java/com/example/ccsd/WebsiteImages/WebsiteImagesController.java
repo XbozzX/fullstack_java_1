@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 
-@RequestMapping("/ccsd/WebsiteImageComtroller")
+@RequestMapping("/api/WebsiteImage")
 public class WebsiteImagesController {
        @Autowired
     private WebsiteImagesService websiteImagesService;
@@ -48,8 +48,8 @@ public class WebsiteImagesController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBook(@PathVariable String id) {
-       websiteImagesService.deleteBook(id);
+    public ResponseEntity<Void> deleteWebsiteImages(@PathVariable String id) {
+       websiteImagesService.deleteWebsiteImages(id);
         return ResponseEntity.noContent().build();
     }
 }

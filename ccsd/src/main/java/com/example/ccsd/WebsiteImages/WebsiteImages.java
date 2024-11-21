@@ -38,7 +38,7 @@ public String getimage() {
     return image;
 } 
 
-public void setImage(String image) {
+public void setimage(String image) {
     this.image = image;
 }
 

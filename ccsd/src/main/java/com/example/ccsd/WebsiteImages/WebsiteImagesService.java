@@ -40,7 +40,7 @@ public class WebsiteImagesService {
                 // Get from database
     
                 WebsiteImages websiteImages = websiteImagesOpt.get();
-                websiteImages.setImage(websiteImagesDetails.getimage());
+                websiteImages.setimage(websiteImagesDetails.getimage());
                 websiteImages.setuploadDate(websiteImages.getuploadDate());
                 websiteImages.setgalleryImage(websiteImagesDetails.getgalleryImage());
                 websiteImages.setintroductionImage(websiteImagesDetails.getintroductionImage());
@@ -51,7 +51,7 @@ public class WebsiteImagesService {
 
         // Deleting
         
-        public void deleteBook(String id) {
+        public void deleteWebsiteImages(String id) {
             websiteImagesRepository.deleteById(id);
         }
     
