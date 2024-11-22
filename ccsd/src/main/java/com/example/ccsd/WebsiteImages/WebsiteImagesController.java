@@ -1,6 +1,9 @@
 package com.example.ccsd.WebsiteImages;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -33,9 +39,40 @@ public class WebsiteImagesController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public WebsiteImages addWebsiteImages(@RequestBody WebsiteImages websiteImages) {
-        return websiteImagesService.addWebsiteImages(websiteImages);
+          @PostMapping
+    public ResponseEntity<Map<String, Object>> addProduct(
+            @RequestParam("title") String title,
+            @RequestParam("postShortDescription") String postShortDescription,
+            @RequestParam("date") String date,
+            @RequestParam("status") String status,
+            @RequestParam("tag") String tag,
+            @RequestParam("place") String place,
+            @RequestParam("content") String content,
+            @RequestParam("image") MultipartFile image) throws IOException {
+
+        // Convert the image to a byte array
+        byte[] imageBytes = image.getBytes();  // Get image data
+
+        // Create a new Product instance
+        WebsiteImages websiteImages = new WebsiteImages();
+        websiteImages.setTitle(title);
+        websiteImages.setpostShortDescription(postShortDescription);
+        websiteImages.setDate(date);
+        websiteImages.setTag(tag);
+        websiteImages.setPlace(place);
+        websiteImages.setStatus(status);
+        websiteImages.setContent(content);
+        websiteImages.setimage(imageBytes);  // Store image as byte array
+
+        // Save the product in MongoDB
+        WebsiteImages savedwebsiteImages = websiteImagesService.addWebsiteImages(websiteImages);
+
+        // Return a response
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", true);
+        response.put("product", savedwebsiteImages);
+        
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping("/{id}")

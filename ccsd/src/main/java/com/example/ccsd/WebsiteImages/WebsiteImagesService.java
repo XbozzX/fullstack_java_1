@@ -41,13 +41,13 @@ public class WebsiteImagesService {
     
                 WebsiteImages websiteImages = websiteImagesOpt.get();
                 websiteImages.setTitle(websiteImagesDetails.getTitle());
-                websiteImages.setimage(websiteImagesDetails.getimage());
                 websiteImages.setpostShortDescription(websiteImagesDetails.getpostShortDescription());
                 websiteImages.setDate(websiteImages.getDate());
                 websiteImages.setStatus(websiteImagesDetails.getStatus());
                 websiteImages.setTag(websiteImagesDetails.getTag());
                 websiteImages.setPlace(websiteImagesDetails.getPlace());
                 websiteImages.setContent(websiteImagesDetails.getContent());
+                websiteImages.setimage(websiteImagesDetails.getimage());
                 return websiteImagesRepository.save(websiteImages);
             }
             return null;
