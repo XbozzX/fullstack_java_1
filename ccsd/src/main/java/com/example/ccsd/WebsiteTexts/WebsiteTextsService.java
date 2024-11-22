@@ -36,7 +36,6 @@ public class WebsiteTextsService {
             websiteTexts.setTitle(textDetails.getTitle());
             websiteTexts.setStatus(textDetails.getStatus());
             websiteTexts.setDescription(textDetails.getDescription());
-            websiteTexts.setPlace(textDetails.getPlace());
 
             return websiteTextsRepository.save(websiteTexts);
         }
