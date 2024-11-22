@@ -34,9 +34,9 @@ public class WebsiteTextsService {
 
             WebsiteTexts websiteTexts = textOpt.get();
             websiteTexts.setTitle(textDetails.getTitle());
-            websiteTexts.setSubtitle(textDetails.getSubtitle());
+            websiteTexts.setStatus(textDetails.getStatus());
             websiteTexts.setDescription(textDetails.getDescription());
-            websiteTexts.setCaption(textDetails.getCaption());
+            websiteTexts.setPlace(textDetails.getPlace());
 
             return websiteTextsRepository.save(websiteTexts);
         }
