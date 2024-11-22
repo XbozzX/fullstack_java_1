@@ -1,6 +1,10 @@
 package com.example.ccsd.Products;
 
+import java.io.IOException;
+// import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -34,10 +40,78 @@ public class productsController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public products addProducts(@RequestBody products Products) {
-        return productsService.addProducts(Products);
+
+    //---- ORIGINAL POST METHOD
+    // @PostMapping
+    // public products addProducts(@RequestBody products Products) {
+    //     return productsService.addProducts(Products);
+    // }
+
+
+
+    ///
+    /// //
+    //---- TESTING 
+    // @PostMapping
+    // public products addProducts(@RequestBody products Products, @RequestParam("adsImages") MultipartFile[] adsImages) throws IOException {
+    //     String uploadDirectory = "src/main/resources/static/images/";
+    //     StringBuilder adsImagesString = new StringBuilder();
+    
+    //     // Save each image and append the filename (or URL) to the string
+    //     for (MultipartFile imageFile : adsImages) {
+    //         String savedImagePath = productsService.saveImageToStorage(uploadDirectory, imageFile);
+    //         adsImagesString.append(savedImagePath).append(",");  // Adding the saved image path to the list
+    //     }
+    
+    //     // Store the image paths in the product object (make sure to remove the last comma)
+    //     Products.setImageStore(adsImagesString.toString().endsWith(",") 
+    //         ? adsImagesString.substring(0, adsImagesString.length() - 1) 
+    //         : adsImagesString.toString());
+    
+    //     // Save product details along with the image path(s)
+    //     return productsService.addProducts(Products);
+    // }
+    //
+    //
+    //
+
+    /// second try
+         @PostMapping
+    public ResponseEntity<Map<String, Object>> addProduct(
+            @RequestParam("title") String title,
+            @RequestParam("postSlug") String postSlug,
+            @RequestParam("postShortDescription") String postShortDescription,
+            @RequestParam("tag") String tag,
+            @RequestParam("place") String place,
+            @RequestParam("date") String date,
+            @RequestParam("status") String status,
+            @RequestParam("image") MultipartFile image) throws IOException {
+
+        // Convert the image to a byte array
+        byte[] imageBytes = image.getBytes();  // Get image data
+
+        // Create a new Product instance
+        products product = new products();
+        product.setTitle(title);
+        product.setPostSlug(postSlug);
+        product.setPostShortDescription(postShortDescription);
+        product.setTag(tag);
+        product.setPlace(place);
+        product.setDateProduct(date);
+        product.setStatus(status);
+        product.setImageStore(imageBytes);  // Store image as byte array
+
+        // Save the product in MongoDB
+        products savedProduct = productsService.addProducts(product);
+
+        // Return a response
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", true);
+        response.put("product", savedProduct);
+        
+        return ResponseEntity.ok(response);
     }
+    //////////////////////////////////////////////////////////////////
 
     @PutMapping("/{id}")
     public ResponseEntity<products> updateProducts(@PathVariable String id, @RequestBody products ProductsDetail) {
@@ -53,23 +127,4 @@ public class productsController {
         productsService.deleteProducts(id);
         return ResponseEntity.noContent().build();
     }
-
-
-    //handle picture    
-    // @PostMapping("auth/createAd")
-    // p@PostMapping("auth/createAd")
-    // public Ads createAd(
-    //     @RequestParam("adsImages") MultipartFile[] adsImages,
-    //     // Add other parameters
-    // ) {
-    //     String uploadDirectory = "src/main/resources/static/images/ads";
-    //     String adsImagesString = "";
-
-    //     for (MultipartFile imageFile : adsImages) {
-    //         adsImagesString += imageService.saveImageToStorage(uploadDirectory, imageFile) + ",";
-    //     }
-
-    //     // Save the adsImagesString in your database
-    //     // You can also associate it with other data in your Ads object
-    // }
 }

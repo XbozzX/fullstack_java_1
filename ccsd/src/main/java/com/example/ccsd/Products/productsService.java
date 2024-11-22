@@ -12,6 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+
+
+
+
 @Service
 public class productsService {
     
@@ -42,15 +46,17 @@ public class productsService {
 
             // Get from database
             products Products = ProductsOpt.get();
+             // list to get the database
+            Products.setAuthor(ProductsDetail.getAuthor());
+            Products.setPostShortDescription(ProductsDetail.getPostShortDescription());
+            Products.setTag(ProductsDetail.getTag());
+            Products.setPlace(ProductsDetail.getPlace());
             Products.setTitle(ProductsDetail.getTitle());
             Products.setPostSlug(ProductsDetail.getPostSlug());
-            Products.setDate(ProductsDetail.getDate());
+            Products.setContent(ProductsDetail.getContent());
             Products.setStatus(ProductsDetail.getStatus());
-            Products.setPlace(ProductsDetail.getPlace());
-            Products.setTag(ProductsDetail.getTag());
-            Products.setPostShortDescription(ProductsDetail.getPostShortDescription());
-            Products.setImageUpload(ProductsDetail.getImageUpload());
-            Products.setPostLongDescription(ProductsDetail.getPostLongDescription());
+            Products.setDateProduct(ProductsDetail.getDateProduct());
+            Products.setImageStore(ProductsDetail.getImageStore());
             return ProductsRepository.save(Products);
     
         }
@@ -68,19 +74,19 @@ public class productsService {
     // Save image in a local directory
     public String saveImageToStorage(String uploadDirectory, MultipartFile imageFile) throws IOException {
         String uniqueFileName = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
-
+    
         Path uploadPath = Path.of(uploadDirectory);
         Path filePath = uploadPath.resolve(uniqueFileName);
-
+    
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
         }
-
+    
         Files.copy(imageFile.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-
-        return uniqueFileName;
+    
+        return uniqueFileName;  // Return the filename, which you can later use for linking
     }
-
+    
     // To view an image
     public byte[] getImage(String imageDirectory, String imageName) throws IOException {
         Path imagePath = Path.of(imageDirectory, imageName);
