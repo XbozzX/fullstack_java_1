@@ -54,7 +54,7 @@ const AddTeam = () => {
           const success = await SaveItemsAdmin.addTeamSave(email, password, firstName, lastName, phone, address, role, userName, dob, image);
         
           if (success) {
-            navigate("/dashboard-admin");
+            navigate("/api/users");
           } else {
             // Handle login failure and display an error message to the user
             alert("Error Saving data");
