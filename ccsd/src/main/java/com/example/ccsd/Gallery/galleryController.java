@@ -95,11 +95,5 @@ public class galleryController {
         GalleryService.deletegallery(id);
         return ResponseEntity.noContent().build();
     }
-
-    @PostMapping
-    public gallery addgGallery(@RequestBody gallery Gallery) {
-        return GalleryService.addGallery(Gallery);
-    }
-
    
 }
