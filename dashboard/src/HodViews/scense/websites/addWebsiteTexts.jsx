@@ -148,8 +148,8 @@ const AddWebsiteText = () => {
                         label="place"
                         onChange={handleChangeplace}
                     >
-                        <MenuItem value={1}>Database</MenuItem>
-
+                        <MenuItem value={1}>Features</MenuItem>
+                        <MenuItem value={2}>About</MenuItem>
 
 
                     </Select>
@@ -176,6 +176,8 @@ const AddWebsiteText = () => {
                 >
                 </FilledInput>
                 </FormControl>
+
+                
                 <FormControl sx={{ m: 1, width: '93%' }} variant="filled">
                 <InputLabel htmlFor="filled-adornment-short-description">Short Description</InputLabel>
                 <FilledInput
