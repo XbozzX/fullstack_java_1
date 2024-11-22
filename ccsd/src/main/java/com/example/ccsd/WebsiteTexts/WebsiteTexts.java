@@ -14,11 +14,11 @@ public class WebsiteTexts {
   private String postSlug;
   private String content;
   private String date;
-  private String image;
+  private byte[] image;
 
   public WebsiteTexts(){}
 
-  public WebsiteTexts(String id,String title, String status, String place, String tag,String postShortDescription, String postSlug, String content, String date, String image){
+  public WebsiteTexts(String id,String title, String status, String place, String tag,String postShortDescription, String postSlug, String content, String date, byte[] image){
     this.id = id;
     this.title = title;
     this.status = status;
@@ -102,14 +102,15 @@ public String getDate(){
 public void setDate(String date) {
   this.date = date;
 }
- 
-public String getImage(){
-  return image;
+
+public byte[] getImage() {
+  return this.image;
 }
 
-public void setImage(String image) {
+public void setImage(byte[] image) {
   this.image = image;
 }
+
 
 }
 
