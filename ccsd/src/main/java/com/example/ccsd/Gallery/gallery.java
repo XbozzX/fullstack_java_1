@@ -10,20 +10,33 @@ public class gallery {
     @Id
     private String id;
     private String title;
-    private String images;
-    private String text;
-    private String description;
+    private String image;
+    private String postShortDescription;
     private Date date;
+    private String status;
+    private String tag;
+    private String place;
+    private String postSlug;
+    private String content;
+
+
 
     public gallery(){}
 
-    public gallery(String id, String title, String images, String text, String description, Date date){
+    public gallery
+    (String id, String title, String images, String postShortDescription, Date date, 
+    String status, String tag, String place, String postSlug, String content )
+    {
         this.id = id;
         this.title = title;
-        this.images = images;
-        this.text = text;
-        this.description = description;
+        this.image = images;
+        this.postShortDescription = postShortDescription;
         this.date = date;
+        this.status = status;
+        this.tag = tag;
+        this.place = place;
+        this.postSlug = postSlug;
+        this.content = content;
     }
 
     //getter method
@@ -43,28 +56,20 @@ public class gallery {
     public void setTitle(String title){
         this.title = title;
     }
-    public String getImages(){
-        return images;
+    public String getimage(){
+        return image;
     }
 
-    public void setImages(String images){
-        this.images = images;
+    public void setimage(String image){
+        this.image = image;
     }
 
-    public String getText(){
-        return text;
+    public String getpostShortDescription(){
+        return postShortDescription;
     }
 
-    public void setText(String text){
-        this.text = text;
-    }
-
-    public String getDescription(){
-        return description;
-    }
-
-    public void setDescription(String description){
-        this.description = description;
+    public void setpostShortDescription(String postShortDescription){
+        this.postShortDescription = postShortDescription;
     }
 
     public Date getDate(){
@@ -73,20 +78,61 @@ public class gallery {
 
      public void setDate(Date date){
          this.date = date;
-  }
+     }
+
+     public String getStatus(){
+        return status;
+     }
+
+     public void setStatus(String status){
+        this.status = status;
+    }
+
+     public String getTag(){
+        return tag;
+     }
+
+     public void setTag(String tag){
+        this.tag = tag;
+    }
+
+     public String getPlace(){
+        return place;
+     }
+
+     public void setPlace(String place){
+        this.place = place;
+    }
+
+     public String getPostSlug(){
+        return postSlug;
+     }
+
+     public void setPostSlug(String postSlug){
+        this.postSlug = postSlug;
+    }
+
+     public String getContent(){
+        return content;
+     }
+
+     public void setContent(String content){
+        this.content = content;
+    }
+
 }
 
     
 
     //  public static void main(String[] args) {
     //       gallery myGallery = new gallery();
-    //        myGallery.setImages("image1.jpg");
-    //       myGallery.setImages("image2.jpg");
-    //       myGallery.setDescription("Hai Cantik tak saya ?");
-    //      myGallery.setDescription("Hensem kan ");
+    //        myGallery.setimages("image1.jpg");
+    //       myGallery.setimages("image2.jpg");
+    //       myGallery.setpostShortDecription("Hai Cantik tak saya ?");
+    //      myGallery.setpostShortDecription("Hensem kan ");
 
-    //      System.out.println(myGallery.getImages());
-    //      System.out.println(myGallery.getDescription());
+    //      System.out.println(myGallery.getimages());
+    //      System.out.println(myGallery.getpostShortDecription());
     //      System.out.println(myGallery.getDate());
     
 
