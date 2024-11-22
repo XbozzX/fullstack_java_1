@@ -36,10 +36,15 @@ public class galleryService {
 
             gallery Gallery = GalleryOpt.get();
             Gallery.setTitle(GalleryDetails.getTitle());
-            Gallery.setImages(GalleryDetails.getImages());
-            Gallery.setText(GalleryDetails.getText());
-            Gallery.setDescription(GalleryDetails.getDescription());
+            Gallery.setimage(GalleryDetails.getimage());
+            Gallery.setpostShortDescription(GalleryDetails.getpostShortDescription());
             Gallery.setDate(GalleryDetails.getDate());
+            Gallery.setStatus(GalleryDetails.getStatus());
+            Gallery.setTag(GalleryDetails.getTag());
+            Gallery.setPlace(GalleryDetails.getPlace());
+            Gallery.setPostSlug(GalleryDetails.getPostSlug());
+            Gallery.setContent(GalleryDetails.getContent());
+
             return GalleryRepository.save(Gallery);
         }
 
