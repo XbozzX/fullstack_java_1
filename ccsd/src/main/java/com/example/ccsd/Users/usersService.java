@@ -29,7 +29,6 @@ public class usersService {
     }
 
 
-
     // Creating new data in repository
     public users addUser(users users) {
         return usersRepository.save(users);
@@ -46,6 +45,10 @@ public class usersService {
             user.setFirstName(usersDetails.getFirstName());
             user.setLastName(usersDetails.getFirstName());
             user.setPhoneNumber(usersDetails.getPhoneNumber());
+            user.setUsername(usersDetails.getUsername());
+            user.setDob(usersDetails.getDob());
+            user.setRole(usersDetails.getRole());
+            user.setAddress(usersDetails.getAddress());
             user.setEmail(usersDetails.getEmail());
             user.setPassword(usersDetails.getPassword());
             user.setProfPic(usersDetails.getProfPic());

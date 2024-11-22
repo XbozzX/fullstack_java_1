@@ -52,7 +52,7 @@ const AddTeam = () => {
       
         try {
           const success = await SaveItemsAdmin.addTeamSave(email, password, firstName, lastName, phone, address, role, userName, dob, image);
-          
+        
           if (success) {
             navigate("/dashboard-admin");
           } else {

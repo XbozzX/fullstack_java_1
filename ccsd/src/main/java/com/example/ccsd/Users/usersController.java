@@ -26,14 +26,6 @@ public class usersController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-     // get user by email
-     @GetMapping("/{id}")
-     public ResponseEntity<users> getUserByEmail(@PathVariable String email) {
-         return usersService.getUserByEmail(email)
-                 .map(ResponseEntity::ok)
-                 .orElse(ResponseEntity.notFound().build());
-     }
-
     @PostMapping
     public users addUser(@RequestBody users users) {
         return usersService.addUser(users);
@@ -53,6 +45,6 @@ public class usersController {
         usersService.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }
-    
+
     
 }

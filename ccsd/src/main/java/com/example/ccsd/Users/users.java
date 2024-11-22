@@ -1,5 +1,7 @@
 package com.example.ccsd.Users;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,6 +12,10 @@ public class users {
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    private String username;
+    private Date dob;
+    private String address;
+    private String role;
     private String email;
     private String password;
     private String profPic;
@@ -17,11 +23,15 @@ public class users {
      // Constructors
      public users() {}
 
-    public users(String userId, String firstName, String  lastName, String phoneNumber, String email, String password, String profPic){
+    public users(String userId, String firstName, String  lastName, String phoneNumber,String username, Date dob, String address, String role, String email, String password, String profPic){
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.dob = dob;
+        this.address = address;
+        this.role = role;
         this.email = email;
         this.profPic = profPic;
     }
@@ -69,6 +79,54 @@ public class users {
        public void setPhoneNumber(String phoneNumber){
            this.phoneNumber = phoneNumber;
        }
+
+        //getter username
+        public String getUsername()
+        {
+            return username;
+        }
+    
+        // setter username
+        public void setUsername(String username){
+            this.username = username;
+        }
+
+          //getter dob
+          public Date getDob()
+          {
+              return dob;
+          }
+      
+          // setter dob
+          public void setDob(Date dob){
+              this.dob = dob;
+          }
+  
+     
+          //getter address
+          public String getAddress()
+          {
+              return address;
+          }
+      
+          // setter address
+          public void setAddress(String address){
+              this.address = address;
+          }
+
+                 //getter role
+        public String getRole()
+        {
+            return role;
+        }
+    
+        // setter role
+        public void setRole(String role){
+            this.role = role;
+        }
+
+  
+
 
        //getter email
        public String getEmail()
