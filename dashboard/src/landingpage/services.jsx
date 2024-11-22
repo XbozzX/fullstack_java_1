@@ -19,7 +19,14 @@ export const Services = (props) => {
                   <i className={d.icon}></i>
                   <div className="service-desc">
                     <h3>{d.name}</h3>
+                    <h4>{d.price}</h4>
                     <p>{d.text}</p>
+                    <a href={`payment/${d.slug}`}>
+                      <button
+                        className="btn btn-custom"
+                      >Buy Now
+                      </button>
+                    </a>
                   </div>
                 </div>
               ))
