@@ -10,116 +10,106 @@ public class products {
     
     //field
     @Id
-    private String id;
-    private String product;
-    private String title;   
-    private String slug;
-    private Date publishingDate;
+    private String author;
+    private String postShortDescription;   
+    private String tag;
+    private String place;
+    private String title;
+    private String postSlug;
+    private String content;
     private String status;
-    private String productPlace;
-    private String tags;
-    private String description;
-    private String longDescription;
+    private Date date;
+
+
+
 
     //Constructors
     public products() {}
 
-    public products(String id, String product, String title, String slug, Date publishingDate, String status, String productPlace, String tags, String description, String longDescription) {
-        this.id = id;
-        this.product = product;
+    public products(String author, String postShortDescription, String tag, String place, String title, String postSlug, String content, String status, Date date) {
+        this.author = author;
+        this.postShortDescription = postShortDescription;
+        this.tag = tag;
+        this.place = place;
         this.title = title;
-        this.slug = slug;
-        this.publishingDate = publishingDate;
+        this.postSlug = postSlug;
+        this.content = content;
         this.status = status;
-        this.productPlace = productPlace;
-        this.tags = tags;
-        this.description = description;
-        this.longDescription = longDescription;
+        this.date = date;
     }
 
 
     // setter
-
-    public void setId(String id){
-        this.id = id;
+    public void setAuthors(String author) {
+        this.author = author;
     }
 
-    public void setProdcut(String product) {
-        this.product = product;
+    public void setPostShortDescription(String postShortDescription){
+        this.postShortDescription = postShortDescription;
     }
 
+    public void setTag(String tag){
+         this.tag = tag;
+    }
+
+    public void setPlace(String place){
+        this.place = place;
+    }
     public void setTitle(String title){
-        this.title = title;
+         this.title = title;
     }
 
-    public void setSlug(String slug){
-         this.slug = slug;
+    public void setPostSlug(String postSlug) {
+        this.postSlug = postSlug;
     }
 
-    public void setPublishingDate(Date publishingDate){
-        this.publishingDate = publishingDate;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public void setStatus(String status){
-         this.status = status;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public void setProductPlace(String productPlace) {
-        this.productPlace = productPlace;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setLongDescription(String longDescription){
-         this.longDescription = longDescription;
+    public void setDate(Date date){
+         this.date = date;
     }
 
 
     // getter
-    public String getId() {
-        return this.id;
+    public String getAuthors() {
+        return this.author;
     }
 
-    public String getProduct() {
-        return this.product;
+    public String getPostShortDescription(){
+        return this.postShortDescription;
     }
 
+    public String getTag(){
+         return this.tag;
+    }
+
+    public String getPlace(){
+        return this.place;
+    }
     public String getTitle(){
-        return this.title;
+         return this.title;
     }
 
-    public String getSlug(){
-        return this.slug;
+    public String getPostSlug() {
+        return this.postSlug;
     }
 
-    public Date getPublishingDate(){
-        return this.publishingDate;
+    public String getContent() {
+        return this.content;
     }
 
-    public String getStatus(){
+    public String getStatus() {
         return this.status;
     }
 
-    public String getProductPlace() {
-        return this.productPlace;
-    }
-
-    public String getTags() {
-        return this.tags;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public String getLongDescription(){
-        return this.longDescription;
+    public Date getDate(){
+         return this.date;
     }
 
 }
