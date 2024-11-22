@@ -47,7 +47,6 @@ public class WebsiteImagesService {
                 websiteImages.setStatus(websiteImagesDetails.getStatus());
                 websiteImages.setTag(websiteImagesDetails.getTag());
                 websiteImages.setPlace(websiteImagesDetails.getPlace());
-                websiteImages.setPostSlug(websiteImagesDetails.getPostSlug());
                 websiteImages.setContent(websiteImagesDetails.getContent());
                 return websiteImagesRepository.save(websiteImages);
             }
