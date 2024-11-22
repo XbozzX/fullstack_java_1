@@ -9,31 +9,33 @@ public class WebsiteImages {
     @Id
     private String id;
     private String title;
-    private String image;
     private String postShortDescription;
-    private Date date;
+    private String date;
     private String status;
     private String tag;
     private String place;
     private String content;
+    private byte [] image;
+
 
 
 
     public WebsiteImages(){}
 
     public WebsiteImages
-    (String id, String title, String images, String postShortDescription, Date date, 
-    String status, String tag, String place,  String content )
+    (String id, String title, String postShortDescription, String date, 
+    String status, String tag, String place,  String content ,byte[] images )
     {
         this.id = id;
         this.title = title;
-        this.image = images;
         this.postShortDescription = postShortDescription;
         this.date = date;
         this.status = status;
         this.tag = tag;
         this.place = place;
         this.content = content;
+        this.image = images;
+
     }
 
     //getter method
@@ -53,13 +55,6 @@ public class WebsiteImages {
     public void setTitle(String title){
         this.title = title;
     }
-    public String getimage(){
-        return image;
-    }
-
-    public void setimage(String image){
-        this.image = image;
-    }
 
     public String getpostShortDescription(){
         return postShortDescription;
@@ -69,11 +64,11 @@ public class WebsiteImages {
         this.postShortDescription = postShortDescription;
     }
 
-    public Date getDate(){
+    public String getDate(){
          return date;
      }
 
-     public void setDate(Date date){
+     public void setDate(String date){
          this.date = date;
      }
 
@@ -110,5 +105,14 @@ public class WebsiteImages {
      public void setContent(String content){
         this.content = content;
     }
+
+    public byte [] getimage(){
+        return image;
+    }
+
+    public void setimage(byte[] image){
+        this.image = image;
+    }
+
 
 }
