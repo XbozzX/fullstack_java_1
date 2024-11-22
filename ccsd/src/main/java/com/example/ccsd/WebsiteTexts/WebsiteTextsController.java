@@ -43,11 +43,6 @@ public class WebsiteTextsController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public WebsiteTexts addText(@RequestBody WebsiteTexts websiteTexts) {
-        return websiteTextsService.addText(websiteTexts);
-    }
-
   /// second try
   @PostMapping
   public ResponseEntity<Map<String, Object>> addProduct(
