@@ -42,8 +42,8 @@ public class WebsiteTextsService {
             websiteTexts.setContent(textDetails.getContent());
             websiteTexts.setDate(textDetails.getDate());
             websiteTexts.setImage(textDetails.getImage());
-
             return websiteTextsRepository.save(websiteTexts);
+
         }
         return null;
     }
