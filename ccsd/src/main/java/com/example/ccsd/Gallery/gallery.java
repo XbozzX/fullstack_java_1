@@ -122,18 +122,4 @@ public class gallery {
 
 }
 
-    
-
-    //  public static void main(String[] args) {
-    //       gallery myGallery = new gallery();
-    //        myGallery.setimages("image1.jpg");
-    //       myGallery.setimages("image2.jpg");
-    //       myGallery.setpostShortDecription("Hai Cantik tak saya ?");
-    //      myGallery.setpostShortDecription("Hensem kan ");
-
-    //      System.out.println(myGallery.getimages());
-    //      System.out.println(myGallery.getpostShortDecription());
-    //      System.out.println(myGallery.getDate());
-    
-
 
