@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 @Document(collection = "Gallery")
 public class gallery {
     @Id
@@ -24,12 +25,12 @@ public class gallery {
     public gallery(){}
 
     public gallery
-    (String id, String title, String images, String postShortDescription, Date date, 
+    (String id, String title, String image, String postShortDescription, Date date, 
     String status, String tag, String place, String postSlug, String content )
     {
         this.id = id;
         this.title = title;
-        this.image = images;
+        this.image = image;
         this.postShortDescription = postShortDescription;
         this.date = date;
         this.status = status;
