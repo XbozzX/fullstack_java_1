@@ -11,7 +11,7 @@ const GetItemsAdmin = {
 
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/view_teams_admin`,
+        `${API_BASE_URL}/api/users`,
 
         {
           // request headers
@@ -45,7 +45,7 @@ const GetItemsAdmin = {
     
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/view_teams_admin_edit/${user_id}`,
+        `${API_BASE_URL}/api/users/${user_id}`,
 
         {
           // request headers
@@ -79,7 +79,7 @@ const GetItemsAdmin = {
 
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/view_clients_admin`,
+        `${API_BASE_URL}/api/users`,
         {
           // request headers
           headers: {
@@ -112,7 +112,7 @@ const GetItemsAdmin = {
     
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/view_teams_admin_edit/${user_id}`,
+        `${API_BASE_URL}/api/users/${user_id}`,
 
         {
           // request headers

@@ -1,4 +1,4 @@
-FROM node:hydrogen-slim
+FROM node:latest
 WORKDIR /app
 EXPOSE 3000
 COPY . .
