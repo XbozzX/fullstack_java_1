@@ -1,9 +1,9 @@
 package com.example.ccsd.WebsiteTexts;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 
@@ -35,7 +35,13 @@ public class WebsiteTextsService {
             WebsiteTexts websiteTexts = textOpt.get();
             websiteTexts.setTitle(textDetails.getTitle());
             websiteTexts.setStatus(textDetails.getStatus());
+            websiteTexts.setPlace(textDetails.getPlace());
+            websiteTexts.setTag(textDetails.getTag());
             websiteTexts.setPostShortDescription(textDetails.getPostShortDescription());
+            websiteTexts.setPostSlug(textDetails.getPostSlug());
+            websiteTexts.setContent(textDetails.getContent());
+            websiteTexts.setDate(textDetails.getDate());
+            websiteTexts.setImage(textDetails.getImage());
 
             return websiteTextsRepository.save(websiteTexts);
         }
