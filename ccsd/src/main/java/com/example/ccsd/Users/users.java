@@ -15,17 +15,17 @@ public class users {
     private String lastName;
     private String phoneNumber;
     private String username;
-    private Date dob;
+    private String dob;
     private String address;
     private String role;
     private String email;
     private String password;
-    private byte profPic;
+    private byte[] profPic;
 
      // Constructors
      public users() {}
 
-    public users(String userId, String firstName, String  lastName, String phoneNumber,String username, Date dob, String address, String role, String email, String password, byte profPic){
+    public users(String userId, String firstName, String  lastName, String phoneNumber,String username, String dob, String address, String role, String email, String password, byte[] profPic){
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -94,13 +94,13 @@ public class users {
         }
 
           //getter dob
-          public Date getDob()
+          public String getDob()
           {
               return dob;
           }
       
           // setter dob
-          public void setDob(Date dob){
+          public void setDob(String dob){
               this.dob = dob;
           }
   
@@ -154,13 +154,13 @@ public class users {
         }
 
         //getter proString pic
-     public byte getProfPic()
+     public byte[] getProfPic()
      {
          return profPic;
      }
  
      // setter proString pic
-     public void setProfPic(byte profPic){
+     public void setProfPic(byte[] profPic){
          this.profPic = profPic;
      }
  
