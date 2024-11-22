@@ -11,7 +11,6 @@ public class WebsiteTexts {
   private String id;
   private String title;
   private String status;
-  private String place;
   private String tag;
   private String postShortDescription;
   private String postSlug;
@@ -23,11 +22,10 @@ public class WebsiteTexts {
 
   public WebsiteTexts(){}
 
-  public WebsiteTexts(String id,String title, String status, String place, String tag,String postShortDescription, String postSlug, String content, Date date, String image){
+  public WebsiteTexts(String id,String title, String status, String tag,String postShortDescription, String postSlug, String content, Date date, String image){
     this.id = id;
     this.title = title;
     this.status = status;
-    this.place = place;
     this.tag = tag;
     this.postShortDescription = postShortDescription;
     this.postSlug = postSlug;
@@ -60,14 +58,6 @@ public String getStatus(){
 
 public void setStatus(String status) {
   this.status = status;
-}
-
-public String getPlace(){
-  return place;
-}
-
-public void setPlace(String place) {
-  this.place = place;
 }
 
 public String getTag(){

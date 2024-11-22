@@ -25,12 +25,12 @@ const AddWebsiteText = () => {
     const colors = tokens(theme.palette.mode);
     const [image, setImage] = useState(null);
 
-    const [place, setPlace] = useState(null);
+   
     const [categories, setCategories] = useState([]); // to store the list of categories    
     const [postShortDescription, setPostShortDescription] = useState(null);
     const [tag, setTag] = useState(null);
     const [title, setTitle] = useState(null);
-    const [postSlug, setPostSlug] = useState(null);
+    const [postSlug, setpostSlug] = useState(null);
     const [status, setStatus] = useState(null);
     const [date, setDate] = useState(null);
     const navigate = useNavigate();
@@ -43,9 +43,7 @@ const AddWebsiteText = () => {
         setOpenAiImage(false);
     }
     
-    const handleChangeplace = (event) => {
-        setPlace(event.target.value);
-      };
+ 
     
 
     const editor = useRef(null)
@@ -67,10 +65,10 @@ const AddWebsiteText = () => {
         event.preventDefault(); // Prevent the default form submission behavior
       
         try {
-          const success = await SaveItemsAdmin.addWebsiteTextAdmin( postShortDescription, tag, title, postSlug, content, status, date, image, place);
+          const success = await SaveItemsAdmin.addWebsiteTextAdmin( postShortDescription, tag, title, postSlug, content, status, date, image);
           
           if (success) {
-            navigate("/website-components-admin");
+            navigate("/api/website-texts");
           } else {
             // Handle login failure and display an error message to the user
             alert("Error Saving data");
@@ -101,7 +99,7 @@ const AddWebsiteText = () => {
         </Dialog>
         <Header title="Add Website Text" subtitle="Please Fill All the Fields" />
             
-        <Box sx={{ display: 'flex', flexWrap: 'wrap' }} component="form" noValidate >{/*onSubmit={handleAddBlog}*/}
+        <Box sx={{ display: 'flex', flexWrap: 'wrap' }} component="form" noValidate onSubmit={handleAddBlog}>
                 <TextField
                 onChange={(e) => setTitle(e.target.value)}
                 label="Enter Text Title"
@@ -123,29 +121,7 @@ const AddWebsiteText = () => {
                         <MenuItem value={1}>Publish</MenuItem>
                     </Select>
                 </FormControl>
-                <FormControl sx={{ m: 1, width: '15.5%' }} variant="filled">
-                    <InputLabel id="place">Text Place</InputLabel>
-                    <Select
-                        labelId="place"
-                        id="place"
-                        value={place}
-                        label="place"
-                        onChange={handleChangeplace}
-                    >
-                        <MenuItem value={1}>1</MenuItem>
-                        <MenuItem value={2}>2</MenuItem>
-                        <MenuItem value={3}>3</MenuItem>
-                        <MenuItem value={4}>4</MenuItem>
-                        <MenuItem value={5}>5</MenuItem>
-                        <MenuItem value={6}>6</MenuItem>
-                        <MenuItem value={7}>7</MenuItem>
-                        <MenuItem value={8}>8</MenuItem>
-                        <MenuItem value={9}>9</MenuItem>
-                        <MenuItem value={10}>10</MenuItem>
-                        <MenuItem value={11}>11</MenuItem>
-                        <MenuItem value={12}>12</MenuItem>
-                    </Select>
-                </FormControl>
+            
 
 
                 <FormControl sx={{ m: 1, width: '60%' }} variant="filled">
@@ -156,13 +132,10 @@ const AddWebsiteText = () => {
                     type='text'
                     endAdornment = {
                         <InputAdornment position='end'>
-                            Use AI to Generate SEO Tags
-                            <IconButton
-                                aria-label="tag"
-                                edge="end"                                        
-                            >
+                            
+                            
                             <SmartToyOutlinedIcon></SmartToyOutlinedIcon>
-                            </IconButton>
+                            
                         </InputAdornment>
                     }
                     
@@ -170,7 +143,7 @@ const AddWebsiteText = () => {
                 </FilledInput>
                 </FormControl>
                 <FormControl sx={{ m: 1, width: '93%' }} variant="filled">
-                <InputLabel htmlFor="filled-adornment-short-description">Short Text</InputLabel>
+                <InputLabel htmlFor="filled-adornment-short-description">Description</InputLabel>
                 <FilledInput
                    onChange={(e) => setPostShortDescription(e.target.value)}
                     id='short-description'
@@ -179,14 +152,10 @@ const AddWebsiteText = () => {
                     rows={3}
                     endAdornment = {
                         <InputAdornment position='end'>
-                            Use AI to Generate Short Descriptions
-                            <IconButton
-                                
-                                aria-label="short-description"
-                                edge="end"                                        
-                            >
+                            
+                            
                             <SmartToyOutlinedIcon></SmartToyOutlinedIcon>
-                            </IconButton>
+                            
                         </InputAdornment>
                     }
                     
@@ -195,18 +164,10 @@ const AddWebsiteText = () => {
 
                 </FormControl>
 
-              <Button
-                
-                sx={{ m: 1, width: '46%' }}
-                color='warning'
-                variant="contained"
-                
-              >
-                AI SEO Checker
-              </Button>
+              
 
                 <Button
-                //type="submit"
+                type="submit"
                 sx={{ m: 1, width: '46%' }}
                 color='success'
                 variant="contained"
