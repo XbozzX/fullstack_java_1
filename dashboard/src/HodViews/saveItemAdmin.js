@@ -50,6 +50,8 @@ const SaveItemsAdmin = {
     }
   },
 
+
+                        //place, postShortDescription, tag, title, postSlug, content, status, date, image
   async addProductAdmin( postShortDescription, tag, title, postSlug, content, status, date, image, place) {
     const token = await localStorage.getItem('jwtToken');
     const username = await localStorage.getItem('userName');

@@ -60,15 +60,18 @@ const AddProduct = () => {
 
 
     const handleImageChange = (event) => {
-        const selectedImage = event.target.files[0];
+         const selectedImage = event.target.files[0];
+        // const selectedImage = event.target.value;
         setImage(selectedImage);
     };
 
     const handleAddBlog = async (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
-      
-        try {
-          const success = await SaveItemsAdmin.addProductAdmin(place, postShortDescription, tag, title, postSlug, content, status, date, image);
+
+
+                                                                //original 
+        try {                                                  ////place, postShortDescription, tag, title, postSlug, content, status, date, image
+          const success = await SaveItemsAdmin.addProductAdmin(postShortDescription, tag, title, postSlug, content, status, date, image, place);
           console.log("test: " + success)
           if (success) {
             navigate("/services");

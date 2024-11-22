@@ -1,6 +1,6 @@
 package com.example.ccsd.Products;
 // import java.io.File;
-import java.util.Date;
+// import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,15 +11,16 @@ public class products {
     
     //field
     @Id
-    private String title;   
-    private String postSlug;
-    private Date date;
-    private String status;
-    private String place;
-    private String tag;
+    private String author;   
     private String postShortDescription;
-    private byte imageUpload;
-    private String postLongDescription;
+    private String tag;
+    private String place;
+    private String title;
+    private String postSlug;
+    private String content;
+    private String status;
+    private String dateProduct;
+    private byte[] imageStore;
 
 
 
@@ -27,90 +28,99 @@ public class products {
     //Constructors
     public products() {}
 
-    public products(String title, String postSlug, Date date, String status, String place, String tag, String postShortDescription, byte imageUpload, String postLongDescription) {
+    public products(String author, String postShortDescription, String tag, String place, String title, String postSlug, String content, String status, String dateProduct, byte[] imageStore) {
+        this.author = author;
+        this.postShortDescription = postShortDescription;
+        this.tag = tag;
+        this.place = place;
         this.title = title;
         this.postSlug = postSlug;
-        this.date = date;
+        this.content = content;
         this.status = status;
-        this.place = place;
-        this.tag = tag;
-        this.postShortDescription = postShortDescription;
-        this.imageUpload = imageUpload;
-        this.postLongDescription = postLongDescription;
+        this.dateProduct = dateProduct;
+        this.imageStore = imageStore;
     }
 
 
     // setter
-    public void setTitle(String title){
+    public void setAuthor(String author){
+        this.author = author;
+    }
+
+    public void setPostShortDescription(String postShortDescription){
+         this.postShortDescription = postShortDescription;
+    }
+
+    public void setTag(String tag){
+        this.tag = tag;
+    }
+    public void setPlace(String place){
+         this.place = place;
+    }
+
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setPostSlug(String postSlug){
-         this.postSlug = postSlug;
+    public void setPostSlug(String postSlug) {
+        this.postSlug = postSlug;
     }
 
-    public void setDate(Date date){
-        this.date = date;
-    }
-    public void setStatus(String status){
-         this.status = status;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setDateProduct(String dateProduct){
+         this.dateProduct = dateProduct;
     }
 
-    public void setPostShortDescription(String postShortDescription) {
-        this.postShortDescription = postShortDescription;
-    }
-
-    public void setImageUpload(byte imageUpload){
-         this.imageUpload = imageUpload;
-    }
-
-    public void setPostLongDescription(String postLongDescription) {
-        this.postLongDescription = postLongDescription;
+    public void setImageStore(byte[] imageStore) {
+        this.imageStore = imageStore;
     }
 
 
     // getter
-    public String getTitle(){
+    public String getAuthor(){
+        return this.author;
+    }
+
+    public String getPostShortDescription(){
+         return this.postShortDescription;
+    }
+
+    public String getTag(){
+        return this.tag;
+    }
+    public String getPlace(){
+         return this.place;
+    }
+
+    public String getTitle() {
         return this.title;
     }
 
-    public String getPostSlug(){
-         return this.postSlug;
+    public String getPostSlug() {
+        return this.postSlug;
     }
 
-    public Date getDate(){
-        return this.date;
-    }
-    public String getStatus(){
-         return this.status;
+    public String getContent() {
+        return this.content;
     }
 
-    public String getPlace() {
-        return this.place;
+    public String getStatus() {
+        return this.status;
     }
 
-    public String getTag() {
-        return this.tag;
+    public String getDateProduct(){
+         return this.dateProduct;
     }
 
-    public String getPostShortDescription() {
-        return this.postShortDescription;
-    }
-
-    public byte getImageUpload(){
-         return this.imageUpload;
-    }
-
-    public String getPostLongDescription() {
-        return this.postLongDescription;
+    public byte[] getImageStore() {
+        return this.imageStore;
     }
 
 }
