@@ -15,7 +15,6 @@ public class WebsiteImages {
     private String status;
     private String tag;
     private String place;
-    private String postSlug;
     private String content;
 
 
@@ -24,7 +23,7 @@ public class WebsiteImages {
 
     public WebsiteImages
     (String id, String title, String images, String postShortDescription, Date date, 
-    String status, String tag, String place, String postSlug, String content )
+    String status, String tag, String place,  String content )
     {
         this.id = id;
         this.title = title;
@@ -34,7 +33,6 @@ public class WebsiteImages {
         this.status = status;
         this.tag = tag;
         this.place = place;
-        this.postSlug = postSlug;
         this.content = content;
     }
 
@@ -103,13 +101,7 @@ public class WebsiteImages {
         this.place = place;
     }
 
-     public String getPostSlug(){
-        return postSlug;
-     }
 
-     public void setPostSlug(String postSlug){
-        this.postSlug = postSlug;
-    }
 
      public String getContent(){
         return content;
