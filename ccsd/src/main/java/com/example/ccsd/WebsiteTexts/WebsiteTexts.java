@@ -2,24 +2,38 @@ package com.example.ccsd.WebsiteTexts;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
+
+import java.util.Date;
 @Document(collection = "websitetexts")
 public class WebsiteTexts {
   @Id
   private String id;
   private String title;
-  private String subtitle;
-  private String description;
-  private String caption;
+  private String status;
+  private String place;
+  private String tag;
+  private String postShortDescription;
+  private String postSlug;
+  private String content;
+  private Date date;
+  private String image;
+
 
 
   public WebsiteTexts(){}
 
-  public WebsiteTexts(String id,String title, String subtitle, String description, String caption){
+  public WebsiteTexts(String id,String title, String status, String place, String tag,String postShortDescription, String postSlug, String content, Date date, String image){
     this.id = id;
     this.title = title;
-    this.subtitle = subtitle;
-    this.description = description;
-    this.caption = caption;
+    this.status = status;
+    this.place = place;
+    this.tag = tag;
+    this.postShortDescription = postShortDescription;
+    this.postSlug = postSlug;
+    this.content = content;
+    this.date = date;
+    this.image = image; 
 
 
   }
@@ -40,31 +54,70 @@ public void setTitle(String title) {
   this.title = title;
 }
 
-public String getSubtitle(){
-  return subtitle;
+public String getStatus(){
+  return status;
 }
 
-public void setSubtitle(String subtitle) {
-  this.subtitle = subtitle;
+public void setStatus(String status) {
+  this.status = status;
+}
+
+public String getPlace(){
+  return place;
+}
+
+public void setPlace(String place) {
+  this.place = place;
+}
+
+public String getTag(){
+  return tag;
+}
+
+public void setTag(String tag) {
+  this.tag = tag;
 }
 
   public String getDescription(){
-    return description;
+    return postShortDescription;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setDescription(String postShortDescription) {
+    this.postShortDescription = postShortDescription;
 }
 
-  public String getCaption(){
-    return caption;
+public String getPostSlug(){
+  return postSlug;
+}
+
+public void setPostSlug(String postSlug) {
+  this.postSlug = postSlug;
+}
+
+  public String getContent(){
+    return content;
   }
 
-  public void setCaption(String caption) {
-    this.caption = caption;
+  public void setContent(String content) {
+    this.content = content;
 }
 
+public Date getDate(){
+  return date;
+}
+
+public void setDate(Date date) {
+  this.date = date;
+
+}
  
+public String getImage(){
+  return image;
+}
+
+public void setImage(String image) {
+  this.image = image;
+}
 
  
 }
