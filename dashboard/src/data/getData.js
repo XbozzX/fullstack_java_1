@@ -11,7 +11,7 @@ const GetData = {
 
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/view_teams_admin/`,
+        `${API_BASE_URL}/api/products`,
 
         {
           // request headers
@@ -45,7 +45,7 @@ const GetData = {
     
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/view_teams_admin_edit`,
+        `${API_BASE_URL}/api/website-texts`,
 
         {
           // request headers
@@ -79,7 +79,7 @@ const GetData = {
 
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/view_clients_admin`,
+        `${API_BASE_URL}/api/WebsiteImage`,
         {
           // request headers
           headers: {
@@ -112,7 +112,7 @@ const GetData = {
     
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/view_teams_admin_edit`,
+        `${API_BASE_URL}/api/Gallery`,
 
         {
           // request headers
@@ -212,7 +212,7 @@ const GetData = {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL}/product/${slug}`,
+            `${API_BASE_URL}/api/product/${slug}`,
             {
                 // request headers
                 headers: {
