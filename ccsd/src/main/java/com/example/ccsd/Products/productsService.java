@@ -35,18 +35,16 @@ public class productsService {
         if (ProductsOpt.isPresent()) {
 
             // Get from database
-
             products Products = ProductsOpt.get();
-            Products.setId(ProductsDetail.getId());
-            Products.setProdcut(ProductsDetail.getProduct());
+            Products.setAuthors(ProductsDetail.getAuthors());
+            Products.setPostShortDescription(ProductsDetail.getPostShortDescription());
+            Products.setTag(ProductsDetail.getTag());
+            Products.setPlace(ProductsDetail.getPlace());
             Products.setTitle(ProductsDetail.getTitle());
-            Products.setSlug(ProductsDetail.getSlug());
-            Products.setPublishingDate(ProductsDetail.getPublishingDate());
+            Products.setPostSlug(ProductsDetail.getPostSlug());
+            Products.setContent(ProductsDetail.getContent());
             Products.setStatus(ProductsDetail.getStatus());
-            Products.setProductPlace(ProductsDetail.getProductPlace());
-            Products.setTags(ProductsDetail.getTags());
-            Products.setDescription(ProductsDetail.getDescription());
-            Products.setLongDescription(ProductsDetail.getLongDescription());
+            Products.setDate(ProductsDetail.getDate());
             return ProductsRepository.save(Products);
     
         }
