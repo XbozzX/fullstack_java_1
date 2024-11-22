@@ -1,7 +1,6 @@
 package com.example.ccsd.WebsiteTexts;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.util.Date;
 
 @Document(collection = "websitetexts")
 public class WebsiteTexts {
@@ -14,12 +13,12 @@ public class WebsiteTexts {
   private String postShortDescription;
   private String postSlug;
   private String content;
-  private Date date;
+  private String date;
   private String image;
 
   public WebsiteTexts(){}
 
-  public WebsiteTexts(String id,String title, String status, String place, String tag,String postShortDescription, String postSlug, String content, Date date, String image){
+  public WebsiteTexts(String id,String title, String status, String place, String tag,String postShortDescription, String postSlug, String content, String date, String image){
     this.id = id;
     this.title = title;
     this.status = status;
@@ -96,11 +95,11 @@ public void setContent(String content) {
   this.content = content;
 }
 
-public Date getDate(){
+public String getDate(){
   return date;
 }
 
-public void setDate(Date date) {
+public void setDate(String date) {
   this.date = date;
 }
  
