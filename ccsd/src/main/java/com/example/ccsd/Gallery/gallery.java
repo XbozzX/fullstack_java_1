@@ -1,6 +1,5 @@
 package com.example.ccsd.Gallery;
 
-import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,9 +10,9 @@ public class gallery {
     @Id
     private String id;
     private String title;
-    private String image;
+    private byte[] image;
     private String postShortDescription;
-    private Date date;
+    private String date;
     private String status;
     private String tag;
     private String place;
@@ -25,7 +24,7 @@ public class gallery {
     public gallery(){}
 
     public gallery
-    (String id, String title, String image, String postShortDescription, Date date, 
+    (String id, String title, byte[] image, String postShortDescription, String date, 
     String status, String tag, String place, String postSlug, String content )
     {
         this.id = id;
@@ -57,11 +56,11 @@ public class gallery {
     public void setTitle(String title){
         this.title = title;
     }
-    public String getimage(){
+    public byte[] getimage(){
         return image;
     }
 
-    public void setimage(String image){
+    public void setimage(byte[] image){
         this.image = image;
     }
 
@@ -73,11 +72,11 @@ public class gallery {
         this.postShortDescription = postShortDescription;
     }
 
-    public Date getDate(){
+    public String getDate(){
          return date;
      }
 
-     public void setDate(Date date){
+     public void setDate(String date){
          this.date = date;
      }
 
