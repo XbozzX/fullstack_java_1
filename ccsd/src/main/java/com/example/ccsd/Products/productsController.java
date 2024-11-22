@@ -53,4 +53,23 @@ public class productsController {
         productsService.deleteProducts(id);
         return ResponseEntity.noContent().build();
     }
+
+
+    //handle picture    
+    // @PostMapping("auth/createAd")
+    // p@PostMapping("auth/createAd")
+    // public Ads createAd(
+    //     @RequestParam("adsImages") MultipartFile[] adsImages,
+    //     // Add other parameters
+    // ) {
+    //     String uploadDirectory = "src/main/resources/static/images/ads";
+    //     String adsImagesString = "";
+
+    //     for (MultipartFile imageFile : adsImages) {
+    //         adsImagesString += imageService.saveImageToStorage(uploadDirectory, imageFile) + ",";
+    //     }
+
+    //     // Save the adsImagesString in your database
+    //     // You can also associate it with other data in your Ads object
+    // }
 }
