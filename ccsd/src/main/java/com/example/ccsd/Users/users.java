@@ -1,5 +1,7 @@
 package com.example.ccsd.Users;
 
+
+
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -18,12 +20,12 @@ public class users {
     private String role;
     private String email;
     private String password;
-    private String profPic;
+    private byte profPic;
 
      // Constructors
      public users() {}
 
-    public users(String userId, String firstName, String  lastName, String phoneNumber,String username, Date dob, String address, String role, String email, String password, String profPic){
+    public users(String userId, String firstName, String  lastName, String phoneNumber,String username, Date dob, String address, String role, String email, String password, byte profPic){
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -125,7 +127,6 @@ public class users {
             this.role = role;
         }
 
-  
 
 
        //getter email
@@ -152,14 +153,14 @@ public class users {
 
         }
 
-        //getter profile pic
-     public String getProfPic()
+        //getter proString pic
+     public byte getProfPic()
      {
          return profPic;
      }
  
-     // setter profile pic
-     public void setProfPic(String profPic){
+     // setter proString pic
+     public void setProfPic(byte profPic){
          this.profPic = profPic;
      }
  
