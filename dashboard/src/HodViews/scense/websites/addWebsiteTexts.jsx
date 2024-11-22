@@ -14,10 +14,14 @@ import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 import SaveItemsAdmin from '../../saveItemAdmin';
 
+
 import Select from '@mui/material/Select';
 import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined';
 
+
 import CK from '../../../Editor/ck';
+
+
 
 
 const AddWebsiteText = () => {
@@ -25,16 +29,18 @@ const AddWebsiteText = () => {
     const colors = tokens(theme.palette.mode);
     const [image, setImage] = useState(null);
 
-   
+
+    const [place, setPlace] = useState(null);
     const [categories, setCategories] = useState([]); // to store the list of categories    
     const [postShortDescription, setPostShortDescription] = useState(null);
     const [tag, setTag] = useState(null);
     const [title, setTitle] = useState(null);
-    const [postSlug, setpostSlug] = useState(null);
+    const [postSlug, setPostSlug] = useState(null);
     const [status, setStatus] = useState(null);
     const [date, setDate] = useState(null);
     const navigate = useNavigate();
     const [openAiImage, setOpenAiImage] = useState(false);
+
 
     const functionOpenAiImage=() =>{
         setOpenAiImage(true);
@@ -42,31 +48,38 @@ const AddWebsiteText = () => {
     const functionCloseAiImage=() =>{
         setOpenAiImage(false);
     }
-    
- 
-    
+   
+    const handleChangeplace = (event) => {
+        setPlace(event.target.value);
+      };
+   
+
 
     const editor = useRef(null)
     const [content, setContent] = useState(null);
 
+
     const handleChange = (event) => {
         setStatus(event.target.value);
       };
-      
+     
 
-      
+
+     
+
 
     const handleImageChange = (event) => {
         const selectedImage = event.target.files[0];
         setImage(selectedImage);
     };
 
+
     const handleAddBlog = async (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
-      
+     
         try {
-          const success = await SaveItemsAdmin.addWebsiteTextAdmin( postShortDescription, tag, title, postSlug, content, status, date, image);
-          
+          const success = await SaveItemsAdmin.addWebsiteTextAdmin( postShortDescription, tag, title, postSlug, content, status, date, image, place);
+         
           if (success) {
             navigate("/api/website-texts");
           } else {
@@ -80,15 +93,19 @@ const AddWebsiteText = () => {
         }
       }
 
-      
+
+     
+
 
   return (
+
 
     <Box>
         <Dialog open={openAiImage} fullWidth maxWidth="lg">
             <DialogTitle> AI Image Generator or Edit </DialogTitle>
             <DialogContent>
                 <Stack spacing={2} margin={2}>
+
 
                 </Stack>
             </DialogContent>
@@ -98,15 +115,16 @@ const AddWebsiteText = () => {
             </DialogActions>
         </Dialog>
         <Header title="Add Website Text" subtitle="Please Fill All the Fields" />
-            
-        <Box sx={{ display: 'flex', flexWrap: 'wrap' }} component="form" noValidate onSubmit={handleAddBlog}>
+           
+        <Box sx={{ display: 'flex', flexWrap: 'wrap' }} component="form" noValidate onSubmit={handleAddBlog} >
                 <TextField
                 onChange={(e) => setTitle(e.target.value)}
-                label="Enter Text Title"
+                label="Enter Title"
                 id="title"
                 sx={{ m: 1, width: '30.5%' }}
                 variant="filled"
                 />
+
 
                 <FormControl sx={{ m: 1, width: '15.5%' }} variant="filled">
                     <InputLabel id="status">Status</InputLabel>
@@ -121,7 +139,23 @@ const AddWebsiteText = () => {
                         <MenuItem value={1}>Publish</MenuItem>
                     </Select>
                 </FormControl>
-            
+                <FormControl sx={{ m: 1, width: '15.5%' }} variant="filled">
+                    <InputLabel id="place">Text Location</InputLabel>
+                    <Select
+                        labelId="place"
+                        id="place"
+                        value={place}
+                        label="place"
+                        onChange={handleChangeplace}
+                    >
+                        <MenuItem value={1}>Database</MenuItem>
+
+
+
+                    </Select>
+                </FormControl>
+
+
 
 
                 <FormControl sx={{ m: 1, width: '60%' }} variant="filled">
@@ -134,16 +168,16 @@ const AddWebsiteText = () => {
                         <InputAdornment position='end'>
                             
                             
-                            <SmartToyOutlinedIcon></SmartToyOutlinedIcon>
-                            
+                        
+                      
                         </InputAdornment>
                     }
-                    
+                   
                 >
                 </FilledInput>
                 </FormControl>
                 <FormControl sx={{ m: 1, width: '93%' }} variant="filled">
-                <InputLabel htmlFor="filled-adornment-short-description">Description</InputLabel>
+                <InputLabel htmlFor="filled-adornment-short-description">Short Description</InputLabel>
                 <FilledInput
                    onChange={(e) => setPostShortDescription(e.target.value)}
                     id='short-description'
@@ -152,17 +186,17 @@ const AddWebsiteText = () => {
                     rows={3}
                     endAdornment = {
                         <InputAdornment position='end'>
-                            
-                            
-                            <SmartToyOutlinedIcon></SmartToyOutlinedIcon>
+                           
                             
                         </InputAdornment>
                     }
-                    
+                   
                 >
                 </FilledInput>
 
+
                 </FormControl>
+
 
               
 
@@ -171,14 +205,17 @@ const AddWebsiteText = () => {
                 sx={{ m: 1, width: '46%' }}
                 color='success'
                 variant="contained"
-                
+               
               >
                 Save
               </Button>
 
-        </Box> 
+
+        </Box>
     </Box>
   );
 };
 
+
 export default AddWebsiteText;
+
