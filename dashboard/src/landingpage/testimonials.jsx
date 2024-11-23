@@ -1,6 +1,12 @@
 import React from "react";
+import Landing from "./landing.jsx";
 
 export const Testimonials = (props) => {
+
+  if (!Landing) {
+    return <div>Loading...</div>;  // Loading state
+  }
+
   return (
     <div id="testimonials">
       <div className="container">
@@ -10,9 +16,9 @@ export const Testimonials = (props) => {
         <div className="row">
           {/* //GET DATA FROM DUMMY DATA*/}
           {/* original: props.data */}
-          {props.data
+          {Landing.backTextData
             // {/* original: props.data */}
-            ? props.data.map((d, i) => (
+            ? Landing.backTextData.map((d, i) => (
                 <div key={`${d.name}-${i}`} className="col-md-4">
                   <div className="testimonial">
                     <div className="testimonial-image"> 

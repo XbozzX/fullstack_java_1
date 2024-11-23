@@ -1,6 +1,12 @@
 import React from "react";
+import Landing from "./landing.jsx";
 
 export const Team = (props) => {
+
+  if (!Landing) {
+    return <div>Loading...</div>;  // Loading state
+  }
+
   return (
     <div id="team" className="text-center">
       <div className="container">
@@ -14,9 +20,9 @@ export const Team = (props) => {
         <div id="row">
            {/* //GET DATA FROM DB */}
           {/* //original: props.data */}
-          {props.data
+          {Landing.backTextData
               //original: props.data
-            ? props.data.map((d, i) => (
+            ? Landing.backTextData.map((d, i) => (
                 <div key={`${d.name}-${i}`} className="col-md-3 col-sm-6 team">
                   <div className="thumbnail">
                     {" "}

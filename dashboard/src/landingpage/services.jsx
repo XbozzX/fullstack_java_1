@@ -1,6 +1,12 @@
 import React from "react";
+import Landing from "./landing.jsx";
 
 export const Services = (props) => {
+
+  if (!Landing) {
+    return <div>Loading...</div>;  // Loading state
+  }
+  
   return (
     <div id="services" className="text-center">
       <div className="container">
@@ -16,9 +22,9 @@ export const Services = (props) => {
 
            {/* //GET DATA FROM DB */}
            {/* original: props.data */}
-          {props.data
+          {Landing.backendProducts
               //props.data
-            ? props.data.map((d, i) => (
+            ? Landing.backendProducts.map((d, i) => (
                 <div key={`${d.name}-${i}`} className="col-md-4">
                   {" "}
                   <i className={d.icon}></i>
