@@ -28,17 +28,20 @@ public class users {
 // firstName, lastName, phoneNumber, username, dob, address, role, email, password, profpic --mine
      //email, password, firstName, lastName, phone, address, role, userName, dob, image --sir's example
 
-    public users(String userId, String firstName, String  lastName, String phoneNumber, String username, String dob, String address, String role,  String email,  String password,  byte[] profPic){
+
+    public users(String userId,  String email,  String password, String firstName, String  lastName, String phoneNumber,String address, String role,  String username, String dob,  byte[] profPic){
         this.userId = userId;
+        this.email = email;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.username = username;
-        this.dob = dob;
         this.address = address;
         this.role = role;
-        this.email = email;
-        this.password = password;
+        this.username = username;
+        this.dob = dob;
+      
+       
         this.profPic = profPic;
     }
 
