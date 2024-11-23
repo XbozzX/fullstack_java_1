@@ -79,7 +79,7 @@ const AddWebsiteText = () => {
      
         try {
  
-          const success = await SaveItemsAdmin.addWebsiteTextAdmin( id, title, status, place, tag, postShortDescription, postSlug, content, date, image);
+          const success = await SaveItemsAdmin.addWebsiteTextAdmin(title, status, place, tag, postShortDescription, postSlug, content, date, image);
          
           if (success) {
             navigate("/api/website-texts");
