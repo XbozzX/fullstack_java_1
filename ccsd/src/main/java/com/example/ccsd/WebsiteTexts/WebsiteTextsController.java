@@ -42,7 +42,7 @@ public class WebsiteTextsController {
 
   /// second try
   @PostMapping
-  public ResponseEntity<Map<String, Object>> addProduct(
+  public ResponseEntity<Map<String, Object>> addText(
           @RequestParam("title") String title,
           @RequestParam("postSlug") String postSlug,
           @RequestParam("postShortDescription") String postShortDescription,

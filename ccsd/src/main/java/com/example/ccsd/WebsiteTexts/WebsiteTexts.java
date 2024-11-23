@@ -18,17 +18,17 @@ public class WebsiteTexts {
 
   public WebsiteTexts(){}
 
-  public WebsiteTexts(String id,String title, String status, String place, String tag,String postShortDescription, String postSlug, String content, String date, byte[] image){
+  public WebsiteTexts(String postShortDescription, String tag, String title, String postSlug, String content, String status, String date, byte[] image, String place){
     this.id = id;
-    this.title = title;
-    this.status = status;
-    this.place = place;
-    this.tag = tag;
     this.postShortDescription = postShortDescription;
+    this.tag = tag;
+    this.title = title;
     this.postSlug = postSlug;
     this.content = content;
+    this.status = status;
     this.date = date;
     this.image = image;
+    this.place = place;
 }
 
 public String getId() {
@@ -39,28 +39,12 @@ public void setId(String id) {
     this.id = id;
 }
 
-public String getTitle(){
-  return title;
+public String getPostShortDescription(){
+  return postShortDescription;
 }
 
-public void setTitle(String title) {
-  this.title = title;
-}
-
-public String getStatus(){
-  return status;
-}
-
-public void setStatus(String status) {
-  this.status = status;
-}
-
-public String getPlace(){
-  return place;
-}
-
-public void setPlace(String place) {
-  this.place = place;
+public void setPostShortDescription(String postShortDescription) {
+  this.postShortDescription = postShortDescription;
 }
 
 public String getTag(){
@@ -71,12 +55,12 @@ public void setTag(String tag) {
   this.tag = tag;
 }
 
-public String getPostShortDescription(){
-  return postShortDescription;
+public String getTitle(){
+  return title;
 }
 
-public void setPostShortDescription(String postShortDescription) {
-  this.postShortDescription = postShortDescription;
+public void setTitle(String title) {
+  this.title = title;
 }
 
 public String getPostSlug(){
@@ -95,6 +79,18 @@ public void setContent(String content) {
   this.content = content;
 }
 
+public String getStatus(){
+  return status;
+}
+
+public void setStatus(String status) {
+  this.status = status;
+}
+
+public String getPlace(){
+  return place;
+}
+
 public String getDate(){
   return date;
 }
@@ -109,6 +105,10 @@ public byte[] getImage() {
 
 public void setImage(byte[] image) {
   this.image = image;
+}
+
+public void setPlace(String place) {
+  this.place = place;
 }
 
 
