@@ -1,7 +1,12 @@
 import { Image } from "./image";
 import React from "react";
+import Landing from "./landing.jsx";
 
-export const Gallery = (props) => {
+export const Gallery = () => {
+  if(!Landing){
+    return<div>Loading...</div>; //Loading state
+  }
+
   return (
     <div id="portfolio" className="text-center">
       <div className="container">
@@ -15,9 +20,9 @@ export const Gallery = (props) => {
           <div className="portfolio-items">
              {/* //GET DATA FROM DB */}
             {/* original: props.data */}
-            {props.data
+            {Landing.backGalaleryData
                 //orignal: props.data
-              ? props.data.map((d, i) => (
+              ? Landing.backGalaleryData.map((d, i) => (
                   <div
                     key={`${d.title}-${i}`}
                     className="col-sm-6 col-md-4 col-lg-4"
@@ -29,7 +34,7 @@ export const Gallery = (props) => {
                     />
                   </div>
                 ))
-              : "Loading..."}
+              : "404 not found"}
           </div>
         </div>
       </div>

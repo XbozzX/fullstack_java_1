@@ -9,35 +9,35 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class gallery {
     @Id
     private String id;
-    private String title;
-    private byte[] image;
-    private String postShortDescription;
-    private String date;
-    private String status;
-    private String tag;
     private String place;
+    private String postShortDescription;
+    private String tag;
+    private String title;
     private String postSlug;
     private String content;
-
-
-
+    private String status;
+    private String date;
+    private byte[] image;
+    
     public gallery(){}
 
     public gallery
-    (String id, String title, byte[] image, String postShortDescription, String date, 
-    String status, String tag, String place, String postSlug, String content )
+    (String id, String place, String postShortDescription, String tag, String title, String postSlug, String content, 
+    String status, String date, byte[] image) {
     {
         this.id = id;
-        this.title = title;
-        this.image = image;
-        this.postShortDescription = postShortDescription;
-        this.date = date;
-        this.status = status;
-        this.tag = tag;
         this.place = place;
+        this.postShortDescription = postShortDescription;
+        this.tag = tag;
+        this.title = title;
         this.postSlug = postSlug;
         this.content = content;
+        this.status = status;
+        this.date = date;
+        this.image = image;
+
     }
+}
 
     //getter method
     public String getId(){
@@ -49,19 +49,12 @@ public class gallery {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
-    }
+    public String getPlace(){
+        return place;
+     }
 
-    public void setTitle(String title){
-        this.title = title;
-    }
-    public byte[] getimage(){
-        return image;
-    }
-
-    public void setimage(byte[] image){
-        this.image = image;
+     public void setPlace(String place){
+        this.place = place;
     }
 
     public String getpostShortDescription(){
@@ -72,23 +65,7 @@ public class gallery {
         this.postShortDescription = postShortDescription;
     }
 
-    public String getDate(){
-         return date;
-     }
-
-     public void setDate(String date){
-         this.date = date;
-     }
-
-     public String getStatus(){
-        return status;
-     }
-
-     public void setStatus(String status){
-        this.status = status;
-    }
-
-     public String getTag(){
+    public String getTag(){
         return tag;
      }
 
@@ -96,15 +73,15 @@ public class gallery {
         this.tag = tag;
     }
 
-     public String getPlace(){
-        return place;
-     }
-
-     public void setPlace(String place){
-        this.place = place;
+    public String getTitle() {
+        return title;
     }
 
-     public String getPostSlug(){
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public String getPostSlug(){
         return postSlug;
      }
 
@@ -112,12 +89,36 @@ public class gallery {
         this.postSlug = postSlug;
     }
 
-     public String getContent(){
+    public String getContent(){
         return content;
      }
 
      public void setContent(String content){
         this.content = content;
+    }
+
+    public String getStatus(){
+        return status;
+     }
+
+     public void setStatus(String status){
+        this.status = status;
+    }
+
+    public String getDate(){
+        return date;
+    }
+
+    public void setDate(String date){
+        this.date = date;
+    }
+
+    public byte[] getimage(){
+        return image;
+    }
+
+    public void setimage(byte[] image){
+        this.image = image;
     }
 
 }
