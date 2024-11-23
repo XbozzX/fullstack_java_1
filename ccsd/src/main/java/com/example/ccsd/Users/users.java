@@ -1,3 +1,4 @@
+//users.java
 package com.example.ccsd.Users;
 
 
@@ -24,8 +25,10 @@ public class users {
 
      // Constructors
      public users() {}
+// firstName, lastName, phoneNumber, username, dob, address, role, email, password, profpic --mine
+     //email, password, firstName, lastName, phone, address, role, userName, dob, image --sir's example
 
-    public users(String userId, String firstName, String  lastName, String phoneNumber,String username, String dob, String address, String role, String email, String password, byte[] profPic){
+    public users(String userId, String firstName, String  lastName, String phoneNumber, String username, String dob, String address, String role,  String email,  String password,  byte[] profPic){
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,6 +38,7 @@ public class users {
         this.address = address;
         this.role = role;
         this.email = email;
+        this.password = password;
         this.profPic = profPic;
     }
 
