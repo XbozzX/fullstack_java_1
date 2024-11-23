@@ -48,6 +48,8 @@ public class WebsiteImagesController {
             @RequestParam("tag") String tag,
             @RequestParam("place") String place,
             @RequestParam("content") String content,
+            @RequestParam("postSlug") String postSlug,
+
             @RequestParam("image") MultipartFile image) throws IOException {
 
         // Convert the image to a byte array
@@ -62,6 +64,7 @@ public class WebsiteImagesController {
         websiteImages.setPlace(place);
         websiteImages.setStatus(status);
         websiteImages.setContent(content);
+        websiteImages.setPostSlug(postSlug);
         websiteImages.setimage(imageBytes);  // Store image as byte array
 
         // Save the product in MongoDB
