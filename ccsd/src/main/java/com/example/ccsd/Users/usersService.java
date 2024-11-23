@@ -1,3 +1,4 @@
+//usersService.java
 package com.example.ccsd.Users;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,7 @@ public class usersService {
 
             users user = userOpt.get();
             user.setFirstName(usersDetails.getFirstName());
-            user.setLastName(usersDetails.getFirstName());
+            user.setLastName(usersDetails.getLastName());
             user.setPhoneNumber(usersDetails.getPhoneNumber());
             user.setUsername(usersDetails.getUsername());
             user.setDob(usersDetails.getDob());

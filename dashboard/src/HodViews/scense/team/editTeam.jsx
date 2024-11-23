@@ -25,30 +25,31 @@ import { useParams } from 'react-router-dom';
 const EditTeam = () => {
     const [teamDetails, setTeamDetails] = useState({});
     const [loading, setLoading] = useState(true); // New loading state
-    const { user_id } = useParams();
+    const { userId } = useParams();
     const [firstName, setFirstName] = useState("");
     const [password, setPassword] = useState("");
     const [lastName, setLastname] = useState("");
-    const [phone, setPhone] = useState("");
+    const [phoneNumber, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [dob, setDob] = useState("");
     const [role, setRole] = useState("");
-    const [userName, setuserName] = useState("");
-    const [image, setImage] = useState(null);
+    const [username, setUsername] = useState("");
+    const [image, saveProfPicToStorage] = useState(null);
     const [email, setEmail] = useState("");
+
     useEffect(() => {
-      GetItemsAdmin.getTeamDataAdminEdit(user_id)
+      GetItemsAdmin.getTeamDataAdminEdit(userId)
         .then((result) => {
           const teamData = result || {};
-          setFirstName(teamData.first_name);
+          setFirstName(teamData.firstName);
           setEmail(teamData.email);
-          setLastname(teamData.last_name);
+          setLastname(teamData.lastName);
           setEmail(teamData.email);
-          setuserName(teamData.user_name);
+          setUsername(teamData.username);
           setDob(teamData.dob);
-          setRole(teamData.access);
-          setPhone(teamData.phone);
-          setImage(teamData.photo);
+          setRole(teamData.role);
+          setPhone(teamData.phoneNumber);
+          setProfPic(teamData.profPic);
           setAddress(teamData.address)
 
           setLoading(false); // Set loading to false when data is loaded
@@ -56,7 +57,7 @@ const EditTeam = () => {
         .catch((error) => {
           console.error("Error fetching team data:", error);
         });
-    }, [user_id]);
+    }, [userId]);
   
 
     const theme = useTheme();
@@ -76,14 +77,14 @@ const EditTeam = () => {
 
     const handleImageChange = (event) => {
         const selectedImage = event.target.files[0];
-        setImage(selectedImage);
+        saveProfPicToStorage(selectedImage);
     };
 
     const handleEditTeam = async (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
       
         try {
-          const success = await EditItemsAdmin.editTeamSave(email, password, firstName, lastName, phone, address, role, userName, dob, image, user_id);
+          const success = await EditItemsAdmin.editTeamSave(userId, firstName, lastName, phoneNumber, username, dob, address, role, email, password, image-upload);
           
           if (success) {
             navigate("/api/users");
@@ -108,15 +109,15 @@ const EditTeam = () => {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     label="Enter Your First Name"
-                    id="first_name"
+                    id="firstName"
                     sx={{ m: 1, width: '30%' }}
                     variant="filled"
                 />
                 <TextField
-                    onChange={(e) => setuserName(e.target.value)}
-                    value={userName}
+                    onChange={(e) => setUsername(e.target.value)}
+                    value={username}
                     label="Enter Desired User Name"
-                    id="user_name"
+                    id="username"
                     sx={{ m: 1, width: '30%' }}
                     variant="filled"
                 />
@@ -129,10 +130,10 @@ const EditTeam = () => {
                     variant="filled"
                 />
                 <TextField
-                    onChange={(e) => setLastname(e.target.value)}
+                    onChange={(e) => setLastName(e.target.value)}
                     value={lastName}
                     label="Enter Your Last Name"
-                    id="last_name"
+                    id="lastName"
                     sx={{ m: 1, width: '30%' }}
                     variant="filled"
                 />
@@ -182,9 +183,9 @@ const EditTeam = () => {
                 <FormControl sx={{ m: 1, width: '30%' }} variant="filled">
                 <InputLabel htmlFor="filled-adornment-phone">Phone</InputLabel>
                 <FilledInput
-                   onChange={(e) => setPhone(e.target.value)}
+                   onChange={(e) => setPhoneNumber(e.target.value)}
                    value={phone}
-                    id='phone'
+                    id='phoneNumber'
                     type='text'
                     endAdornment = {
                         <InputAdornment position='end'>

@@ -7,7 +7,7 @@ const API_BASE_URL = 'http://localhost:8082';
 const GetItemsAdmin = {
   async getTeamDataAdmin() {
     const token = await localStorage.getItem('jwtToken');
-    const username = await localStorage.getItem('userName');
+    const username = await localStorage.getItem('username');
 
     try {
       const response = await axios.get(
@@ -39,13 +39,13 @@ const GetItemsAdmin = {
     
   },
 
-  async getTeamDataAdminEdit(user_id) {
+  async getTeamDataAdminEdit(userId) {
     const token = await localStorage.getItem('jwtToken');
 
     
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/api/users/${user_id}`,
+        `${API_BASE_URL}/api/users/${userId}`,
 
         {
           // request headers
@@ -56,7 +56,7 @@ const GetItemsAdmin = {
         }
       );
   
-      console.log(response.data.first_name)      
+      console.log(response.data.firstName)      
       if (response.status === 200) {
         return response.data;
       }
@@ -75,7 +75,7 @@ const GetItemsAdmin = {
 
   async getClientDataAdmin() {
     const token = await localStorage.getItem('jwtToken');
-    const username = await localStorage.getItem('userName');
+    const username = await localStorage.getItem('username');
 
     try {
       const response = await axios.get(
@@ -106,13 +106,13 @@ const GetItemsAdmin = {
     
   },
 
-    async getTeamDataAdminEdit(user_id) {
+    async getTeamDataAdminEdit(userId) {
     const token = await localStorage.getItem('jwtToken');
 
     
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/api/users/${user_id}`,
+        `${API_BASE_URL}/api/users/${userId}`,
 
         {
           // request headers
@@ -123,7 +123,7 @@ const GetItemsAdmin = {
         }
       );
   
-      console.log(response.data.first_name)      
+      console.log(response.data.firstName)      
       if (response.status === 200) {
         return response.data;
       }

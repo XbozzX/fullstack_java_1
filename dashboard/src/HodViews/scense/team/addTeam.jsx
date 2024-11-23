@@ -1,3 +1,5 @@
+//addTeam.jsx
+
 import React, { useState } from 'react';
 import { Box, Typography, useTheme, Button, Grid } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
@@ -49,9 +51,10 @@ const AddTeam = () => {
 
     const handleAddTeam = async (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
-      
+      //firstName, lastName, phone, userName, dob, address, role, email, password, image
+      // email, password, firstName, lastName, phone, address, role, userName, dob, image
         try {
-          const success = await SaveItemsAdmin.addTeamSave(email, password, firstName, lastName, phone, address, role, userName, dob, image);
+          const success = await SaveItemsAdmin.addTeamSave(firstName, lastName, phone, userName, dob, address, role, email, password, image);
         
           if (success) {
             navigate("/api/users");
