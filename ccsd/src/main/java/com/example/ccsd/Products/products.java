@@ -2,6 +2,8 @@ package com.example.ccsd.Products;
 // import java.io.File;
 // import java.util.Date;
 
+import java.util.Base64;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -21,6 +23,7 @@ public class products {
     private String status;
     private String dateProduct;
     private byte[] imageStore;
+    private String imageStore64String;
 
 
 
@@ -41,6 +44,17 @@ public class products {
         this.imageStore = imageStore;
     }
 
+    public String getImageAsBase64() {
+        return imageStore != null ? Base64.getEncoder().encodeToString(imageStore) : null;
+    }
+
+    public void setImageStore64String(String imageStore64String) {
+        this.imageStore64String = imageStore64String;  // Set Base64 string
+    }
+
+    public String getImageStore64String() {
+        return this.imageStore64String;  // Return Base64 string
+    }
 
     // setter
     public void setAuthor(String author){
