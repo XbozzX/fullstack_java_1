@@ -1,6 +1,8 @@
 import React from "react";
 
+
 export const Features = (props) => {
+
   return (
     <div id="features" className="text-center">
       <div className="container">
@@ -8,7 +10,10 @@ export const Features = (props) => {
           <h2>Features</h2>
         </div>
         <div className="row">
+          {/* //GET DATA FROM DB */}
+          {/* original: props.data */}
           {props.data
+              // original: props.data
             ? props.data.map((d, i) => (
                 <div key={`${d.title}-${i}`} className="col-xs-6 col-md-3">
                   {" "}
@@ -17,8 +22,8 @@ export const Features = (props) => {
                   <p>{d.text}</p>
                 </div>
               ))
-            : "Loading..."}
-        </div>
+            : "404 not found..."}
+        </div>  
       </div>
     </div>
   );

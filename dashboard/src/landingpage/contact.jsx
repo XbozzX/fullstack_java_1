@@ -35,6 +35,8 @@ export const Contact = (props) => {
         }
       );
   };
+
+  // UPDATE IT MANUALLY
   return (
     <div>
       <div id="contact">

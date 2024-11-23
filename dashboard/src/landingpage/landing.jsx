@@ -25,6 +25,7 @@ const Landing = () => {
     }, []);
  
     return (
+        // CHANGE MANUALLY
         <div>
             <Navigation />
             <Header data={landingPageData.Header} />

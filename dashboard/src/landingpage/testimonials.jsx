@@ -8,11 +8,14 @@ export const Testimonials = (props) => {
           <h2>What our clients say</h2>
         </div>
         <div className="row">
-          {props.backTextData
-            ? props.backTextData.map((d, i) => (
+          {/* //GET DATA FROM DUMMY DATA*/}
+          {/* original: props.data */}
+          {props.data
+            // {/* original: props.data */}
+            ? props.data.map((d, i) => (
                 <div key={`${d.name}-${i}`} className="col-md-4">
                   <div className="testimonial">
-                    <div className="testimonial-image">
+                    <div className="testimonial-image"> 
                       {" "}
                       <img src={d.img} alt="" />{" "}
                     </div>
