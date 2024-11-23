@@ -1,6 +1,13 @@
 import React from "react";
+import Landing from "./landing.jsx";
 
-export const Features = (props) => {
+
+export const Features = () => {
+
+  if (!Landing) {
+    return <div>Loading...</div>;  // Loading state
+  }
+
   return (
     <div id="features" className="text-center">
       <div className="container">
@@ -8,8 +15,11 @@ export const Features = (props) => {
           <h2>Features</h2>
         </div>
         <div className="row">
-          {props.data
-            ? props.data.map((d, i) => (
+          {/* //GET DATA FROM DB */}
+          {/* original: props.data */}
+          {Landing.backTextData
+              // original: props.data
+            ? Landing.backTextData.map((d, i) => (
                 <div key={`${d.title}-${i}`} className="col-xs-6 col-md-3">
                   {" "}
                   <i className={d.icon}></i>
@@ -17,8 +27,8 @@ export const Features = (props) => {
                   <p>{d.text}</p>
                 </div>
               ))
-            : "Loading..."}
-        </div>
+            : "404 not found..."}
+        </div>  
       </div>
     </div>
   );

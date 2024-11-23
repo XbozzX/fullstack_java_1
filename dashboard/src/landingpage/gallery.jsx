@@ -13,8 +13,11 @@ export const Gallery = (props) => {
         </div>
         <div className="row">
           <div className="portfolio-items">
-            {props.GalaleryData
-              ? props.GalaleryData.map((d, i) => (
+             {/* //GET DATA FROM DB */}
+            {/* original: props.data */}
+            {props.data
+                //orignal: props.data
+              ? props.data.map((d, i) => (
                   <div
                     key={`${d.title}-${i}`}
                     className="col-sm-6 col-md-4 col-lg-4"
