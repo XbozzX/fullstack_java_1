@@ -16,9 +16,9 @@ export const Testimonials = (props) => {
         <div className="row">
           {/* //GET DATA FROM DUMMY DATA*/}
           {/* original: props.data */}
-          {Landing.backTextData
+          {props.data
             // {/* original: props.data */}
-            ? Landing.backTextData.map((d, i) => (
+            ? props.data.map((d, i) => (
                 <div key={`${d.name}-${i}`} className="col-md-4">
                   <div className="testimonial">
                     <div className="testimonial-image"> 

@@ -18,16 +18,16 @@ export const About = (props) => {
             <div className="about-text">
               <h2>About Us</h2>
               {/* //GET DATA FROM DUMMY DATA*/}
-              <p>{Landing.backTextData ? Landing.backTextData.paragraph : "loading..."}</p>
+              <p>{props.data ? props.data.paragraph : "loading..."}</p>
               <h3>Why Choose Us?</h3>
               <div className="list-style">
                 <div className="col-lg-6 col-sm-6 col-xs-12">
                   <ul>
                     {/* //GET DATA FROM DUMMY DATA*/}
                     {/* original: props.data */}
-                    {Landing.backTextData
+                    {props.data
                         // original: props.data.Why
-                      ? Landing.backTextData.Why.map((d, i) => (
+                      ? props.data.Why.map((d, i) => (
                           <li key={`${d}-${i}`}>{d}</li>
                         ))
                       : "loading"}
@@ -36,9 +36,9 @@ export const About = (props) => {
                 <div className="col-lg-6 col-sm-6 col-xs-12">
                   <ul>
                     {/* original: props.data */}
-                    {Landing.backTextData
+                    {props.data
                      // original: props.data.Why2
-                      ? Landing.backTextData.Why2.map((d, i) => (
+                      ? props.data.Why2.map((d, i) => (
                           <li key={`${d}-${i}`}> {d}</li>
                         ))
                       : "loading"}
