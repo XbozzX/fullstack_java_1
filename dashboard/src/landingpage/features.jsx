@@ -1,12 +1,7 @@
 import React from "react";
-import Landing from "./landing.jsx";
 
 
-export const Features = () => {
-
-  if (!Landing) {
-    return <div>Loading...</div>;  // Loading state
-  }
+export const Features = (props) => {
 
   return (
     <div id="features" className="text-center">
@@ -17,9 +12,9 @@ export const Features = () => {
         <div className="row">
           {/* //GET DATA FROM DB */}
           {/* original: props.data */}
-          {Landing.backTextData
+          {props.data
               // original: props.data
-            ? Landing.backTextData.map((d, i) => (
+            ? props.data.map((d, i) => (
                 <div key={`${d.title}-${i}`} className="col-xs-6 col-md-3">
                   {" "}
                   <i className={d.icon}></i>
