@@ -57,18 +57,21 @@ public class usersController {
     // }
 // addUser v2
     ////////////////////////////////////////////
+    /// //email, password, firstName, lastName, phone, address, role, userName, dob, image --sir's example
     
  @PostMapping
     public ResponseEntity<Map<String, Object>> addUser(
+            @RequestParam("email") String email,
+            @RequestParam("password") String password,
             @RequestParam("firstName") String firstName,
             @RequestParam("lastName") String lastName,
             @RequestParam("phoneNumber") String phoneNumber,
-            @RequestParam("username") String username,
-            @RequestParam("dob") String dob,
             @RequestParam("address") String address,
             @RequestParam("role") String role,
-            @RequestParam("email") String email,
-            @RequestParam("password") String password,
+            @RequestParam("username") String username,
+            @RequestParam("dob") String dob,
+           
+           
             @RequestParam("profPic") MultipartFile profPic) throws IOException {
 
         // Convert the image to a byte array
@@ -76,15 +79,17 @@ public class usersController {
 
         // Create a new users instance
         users users = new users();
+        users.setEmail(email);
+        users.setPassword(password);
         users.setFirstName(firstName);
         users.setLastName(lastName);
         users.setPhoneNumber(phoneNumber);
-        users.setUsername(username);
-        users.setDob(dob);
         users.setAddress(address);
         users.setRole(role);
-        users.setEmail(email);
-        users.setPassword(password);
+        users.setUsername(username);
+        users.setDob(dob);
+       
+      
         users.setProfPic(imageBytes); //store image as byte array
 
 

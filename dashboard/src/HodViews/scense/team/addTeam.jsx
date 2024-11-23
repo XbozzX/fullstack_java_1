@@ -54,7 +54,7 @@ const AddTeam = () => {
       //firstName, lastName, phone, userName, dob, address, role, email, password, image
       // email, password, firstName, lastName, phone, address, role, userName, dob, image
         try {
-          const success = await SaveItemsAdmin.addTeamSave(firstName, lastName, phone, userName, dob, address, role, email, password, image);
+          const success = await SaveItemsAdmin.addTeamSave(email, password, firstName, lastName, phone, address, role, userName, dob, image);
         
           if (success) {
             navigate("/api/users");
