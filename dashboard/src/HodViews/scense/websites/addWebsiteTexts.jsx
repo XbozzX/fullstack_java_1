@@ -78,8 +78,7 @@ const AddWebsiteText = () => {
         event.preventDefault(); // Prevent the default form submission behavior
      
         try {
- 
-          const success = await SaveItemsAdmin.addWebsiteTextAdmin(title, status, place, tag, postShortDescription, postSlug, content, date, image);
+          const success = await SaveItemsAdmin.addWebsiteTextAdmin( postShortDescription, tag, title, postSlug, content, status, date, image, place);
          
           if (success) {
             navigate("/api/website-texts");
