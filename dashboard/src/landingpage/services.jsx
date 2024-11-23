@@ -1,9 +1,37 @@
-import React from "react";
+import React , { useEffect, useState }from "react";
 import Landing from "./landing.jsx";
 
-export const Services = (props) => {
 
-  if (!Landing) {
+import axios from 'axios';
+
+axios.defaults.withCredentials = true;
+
+const API_BASE_URL = 'http://localhost:8082';
+
+export const Services = () => {
+  const token = localStorage.getItem('jwtToken');
+  const username = localStorage.getItem('userName');
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // Fetch all products from the API
+    fetch( `${API_BASE_URL}/api/products`,
+
+      {
+        // request headers
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }
+      }) // Your backend API URL
+      .then(response => response.json())
+      .then(data => {
+        setProducts(data);
+      })
+      .catch(error => console.error('Error fetching products:', error));
+  }, []);
+
+  if (!products) {
     return <div>Loading...</div>;  // Loading state
   }
   
@@ -22,22 +50,39 @@ export const Services = (props) => {
 
            {/* //GET DATA FROM DB */}
            {/* original: props.data */}
-          {Landing.backendProducts
+          {products.length > 0
               //props.data
-            ? Landing.backendProducts.map((d, i) => (
-                <div key={`${d.name}-${i}`} className="col-md-4">
+            ? products.map((product, index) => (
+                <div key={`${product.name}-${index}`} className="col-md-4">
                   {" "}
-                  <i className={d.icon}></i>
+                  <i className={product.icon}></i>
                   <div className="service-desc">
-                    <h3>{d.name}</h3>
-                    <h4>{d.price}</h4>
-                    <p>{d.text}</p>
-                    <a href={`payment/${d.slug}`}>
+                    <h3>{product.name}</h3>
+                    <h4>{product.price}</h4>
+                    <p>{product.text}</p>
+                    <a href={`payment/${product.slug}`}>
                       <button
                         className="btn btn-custom"
                       >Buy Now
                       </button>
                     </a>
+                    <div className="service-desc">
+                  {/* Display Image */}
+                  {product.imageStore && (
+                    <img
+                      src={`data:image/jpeg;base64,${product.imageStore}`} // Displaying image
+                      alt={product.title}
+                      className="img-fluid"
+                    />
+                  )}
+                  <h3>{product.title}</h3>
+                  <h4>{product.tag}</h4>
+                  <p>{product.postShortDescription}</p>
+                  <p>{product.place}</p>
+                  <p>{product.dateProduct}</p>
+                  <p>{product.status}</p>
+                  {/* Add any other fields you need */}
+                </div>
                   </div>
                 </div>
               ))

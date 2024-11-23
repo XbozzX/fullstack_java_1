@@ -1,10 +1,10 @@
 package com.example.ccsd.Products;
 
 import java.io.IOException;
-// import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,10 +28,19 @@ public class productsController {
     @Autowired
     private productsService productsService;
 
-    @GetMapping
-    public List<products> getAllProducts() {
-        return productsService.getAllProducts();
-    }
+@GetMapping
+public List<products> getAllProducts() {
+    List<products> productsList = productsService.getAllProducts();  // Get all products
+
+    // Process each product in the list
+    return productsList.stream()
+            .map(product -> {
+                // Add Base64 encoded image to each product
+                product.setImageStore64String(product.getImageAsBase64());
+                return product;
+            })
+            .collect(Collectors.toList());  // Collect the processed products back into a list
+}
 
     @GetMapping("/{id}")
     public ResponseEntity<products> getProductskById(@PathVariable String id) {
