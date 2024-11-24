@@ -1,9 +1,33 @@
-import React from "react";
-import Landing from "./landing.jsx";
-export const About = (props) => {
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-  if (!Landing) {
-    return <div>Loading...</div>;  // Loading state
+axios.defaults.withCredentials = true;
+
+const API_BASE_URL = "http://localhost:8082";
+
+export const About = () => {
+  const token = localStorage.getItem("jwtToken");
+  const username = localStorage.getItem("userName");
+  const [WebsiteTexts, setPostShortDescription] = useState([]);
+
+  useEffect(() => {
+    // Fetch all text from the API
+    fetch(`${API_BASE_URL}/api/website-texts`, {
+      // Request headers
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setPostShortDescription(data);
+      })
+      .catch((error) => console.error("Error fetching website texts:", error));
+  }, []);
+
+  if (!WebsiteTexts || WebsiteTexts.length === 0) {
+    return <div>Loading...</div>; // Loading state
   }
 
   return (
@@ -11,40 +35,26 @@ export const About = (props) => {
       <div className="container">
         <div className="row">
           <div className="col-xs-12 col-md-6">
-            {" "}
-            <img src="img/about.jpg" className="img-responsive" alt="" />{" "}
+            <img src="img/about.jpg" className="img-responsive" alt="" />
           </div>
+
           <div className="col-xs-12 col-md-6">
             <div className="about-text">
               <h2>About Us</h2>
-              {/* //GET DATA FROM DUMMY DATA*/}
-              <p>{props.data ? props.data.paragraph : "loading..."}</p>
+              {/* Render data from API */}
+              {WebsiteTexts.map((websiteText, index) => (
+                <div key={`${websiteText.name}-${index}`} className="col-md-12">
+                  <p>{websiteText.postShortDescription}</p>
+
+                </div>
+              ))}
               <h3>Why Choose Us?</h3>
-              <div className="list-style">
-                <div className="col-lg-6 col-sm-6 col-xs-12">
-                  <ul>
-                    {/* //GET DATA FROM DUMMY DATA*/}
-                    {/* original: props.data */}
-                    {props.data
-                        // original: props.data.Why
-                      ? props.data.Why.map((d, i) => (
-                          <li key={`${d}-${i}`}>{d}</li>
-                        ))
-                      : "loading"}
-                  </ul>
+              {WebsiteTexts.map((websiteText, index) => (
+                <div key={`choose-${websiteText.name}-${index}`} className="col-md-12">
+                  <p>{websiteText.title}</p>
+                  <p>{websiteText.tag}</p>
                 </div>
-                <div className="col-lg-6 col-sm-6 col-xs-12">
-                  <ul>
-                    {/* original: props.data */}
-                    {props.data
-                     // original: props.data.Why2
-                      ? props.data.Why2.map((d, i) => (
-                          <li key={`${d}-${i}`}> {d}</li>
-                        ))
-                      : "loading"}
-                  </ul>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
