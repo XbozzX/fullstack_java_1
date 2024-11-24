@@ -39,13 +39,8 @@ export const Services = () => {
       <div className="container">
         <div className="section-title">
           <h2>Our Services</h2>
-          <p>
-            SERVICES PAK MIR
-          </p>
         </div>
         <div className="row">
-
-
            {/* //GET DATA FROM DB */}
            {/* original: props.data */}
           {products.length > 0

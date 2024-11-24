@@ -42,12 +42,12 @@ const AddWebsiteText = () => {
     const [openAiImage, setOpenAiImage] = useState(false);
 
 
-    const functionOpenAiImage=() =>{
-        setOpenAiImage(true);
-    }
-    const functionCloseAiImage=() =>{
-        setOpenAiImage(false);
-    }
+    // const functionOpenAiImage=() =>{
+    //     setOpenAiImage(true);
+    // }
+    // const functionCloseAiImage=() =>{
+    //     setOpenAiImage(false);
+    // }
    
     const handleChangeplace = (event) => {
         setPlace(event.target.value);
@@ -69,14 +69,15 @@ const AddWebsiteText = () => {
 
 
     const handleImageChange = (event) => {
-        const selectedImage = event.target.files[0];
+        // const selectedImage = event.target.files[0];
+        const selectedImage = event.target.value;
         setImage(selectedImage);
     };
 
 
     const handleAddBlog = async (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
-     
+        
         try {
           const success = await SaveItemsAdmin.addWebsiteTextAdmin( postShortDescription, tag, title, postSlug, content, status, date, image, place);
          

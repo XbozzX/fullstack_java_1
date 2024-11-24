@@ -222,7 +222,7 @@ const GetData = {
                 }
             }
         );
-
+          
         if (response.status === 200) {
             return response.data;
         }
