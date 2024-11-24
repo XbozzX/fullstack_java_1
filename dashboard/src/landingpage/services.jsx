@@ -1,5 +1,4 @@
 import React , { useEffect, useState }from "react";
-import Landing from "./landing.jsx";
 
 
 import axios from 'axios';
@@ -41,8 +40,7 @@ export const Services = () => {
         <div className="section-title">
           <h2>Our Services</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed
-            dapibus leonec.
+            SERVICES PAK MIR
           </p>
         </div>
         <div className="row">
@@ -55,12 +53,21 @@ export const Services = () => {
             ? products.map((product, index) => (
                 <div key={`${product.name}-${index}`} className="col-md-4">
                   {" "}
-                  <i className={product.icon}></i>
+                  {/* <i className={product.icon}></i> */}
                   <div className="service-desc">
-                    <h3>{product.name}</h3>
-                    <h4>{product.price}</h4>
-                    <p>{product.text}</p>
-                    <a href={`payment/${product.slug}`}>
+                  {product.imageStore && (
+                    <img
+                      src={`data:image/jpeg;base64,${product.imageStore}`} // Displaying image
+                      alt={product.title}
+                      className="img-fluid"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+
+                  )}
+                    <h3>{product.title}</h3>
+                    <h4>{product.tag}</h4>
+                    <p>{product.postShortDescription}</p>
+                    <a href={`payment/${product.postSlug}`}>
                       <button
                         className="btn btn-custom"
                       >Buy Now
@@ -68,7 +75,7 @@ export const Services = () => {
                     </a>
                     <div className="service-desc">
                   {/* Display Image */}
-                  {product.imageStore && (
+                  {/* {product.imageStore && (
                     <img
                       src={`data:image/jpeg;base64,${product.imageStore}`} // Displaying image
                       alt={product.title}
@@ -80,7 +87,7 @@ export const Services = () => {
                   <p>{product.postShortDescription}</p>
                   <p>{product.place}</p>
                   <p>{product.dateProduct}</p>
-                  <p>{product.status}</p>
+                  <p>{product.status}</p> */}
                   {/* Add any other fields you need */}
                 </div>
                   </div>

@@ -15,6 +15,7 @@ const Payment = () => {
         const fetchProduct = async () => {
             try {
                 const productData = await GetData.getProduct(productSlug);
+                console.log(productData)
                 setProduct(productData);
                 setAmount(productData.price); // Assuming the product data has a price field
             } catch (error) {
