@@ -1,10 +1,6 @@
 //usersService.java
 package com.example.ccsd.Users;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,12 +9,25 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 
 @Service
 public class usersService {
 
     @Autowired
     private usersRepository usersRepository;
+
+
+ 
+
+    // Method to get a user by ID //display team user
+    public users getUserByIdView(String id) {
+        Optional<users> userOptional = usersRepository.findById(id);
+        return userOptional.orElse(null); // Return null if user not found
+    }
 
     // Getting all users
     public List<users> getAllUsers() {

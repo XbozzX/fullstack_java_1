@@ -1,3 +1,4 @@
+//getItemAdmin.js
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
@@ -7,7 +8,7 @@ const API_BASE_URL = 'http://localhost:8082';
 const GetItemsAdmin = {
   async getTeamDataAdmin() {
     const token = await localStorage.getItem('jwtToken');
-    const username = await localStorage.getItem('username');
+    const username = await localStorage.getItem('userName');
 
     try {
       const response = await axios.get(
@@ -45,7 +46,7 @@ const GetItemsAdmin = {
     
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/api/users/${userId}`,
+        `${API_BASE_URL}/api/users${userId}`,
 
         {
           // request headers
@@ -112,7 +113,7 @@ const GetItemsAdmin = {
     
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/api/users/${userId}`,
+        `${API_BASE_URL}/api/users${userId}`,
 
         {
           // request headers

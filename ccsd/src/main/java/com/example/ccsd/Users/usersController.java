@@ -2,10 +2,13 @@
 
 package com.example.ccsd.Users;
 
+
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,10 +33,35 @@ public class usersController {
     @Autowired
     private usersService usersService;
 
+    // @GetMapping
+    // public List<users> getAllUsers() {
+    //     return usersService.getAllUsers();
+
+    // }
+
+     // Endpoint to get all users
+     @GetMapping
+     public ResponseEntity<List<users>> getAllUsersTeam() {
+         List<users> usersList = usersService.getAllUsers();
+         return ResponseEntity.ok(usersList);
+     }
+ 
+   
+
+    
     @GetMapping
-    public List<users> getAllUsers() {
-        return usersService.getAllUsers();
-    }
+public List<users> getAllUsers() {
+    List<users> usersList = usersService.getAllUsers();  // Get all products
+
+    // Process each users in the list
+    return usersList.stream()
+            .map(users -> {
+                // Add Base64 encoded image to each users
+                users.setImageStore64String(users.getImageAsBase64());
+                return users;
+            })
+            .collect(Collectors.toList());  // Collect the processed users back into a list
+}
 
     // get user by id 
     @GetMapping("/{id}")
@@ -104,6 +132,23 @@ public class usersController {
         return ResponseEntity.ok(response);
     }
 
+//     @RestController
+// @RequestMapping("/api")
+// public class TeamController {
+
+    // @Autowired
+    // private UserRepository userRepository;
+
+    // @GetMapping("/team")
+    // public List<users> getTeam() {
+    //     return usersService.findAll()
+    //             .stream()
+    //             .map(user -> new users(user.getFirstName(), user.getRole(), user.getProfPic()))
+    //             .collect(Collectors.toList());
+    // }
+
+
+
 
 
     ///////////////////////////////////////
@@ -139,6 +184,8 @@ public class usersController {
         usersService.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }
+
+
 
     //  @PostMapping("auth/createAd")
     // public Ads createAd(
