@@ -63,10 +63,8 @@ public class galleryController {
             @RequestParam("content") String content,
             @RequestParam("image") MultipartFile image) throws IOException {
 
-        // Convert the image to a byte array
-        byte[] imageBytes = image.getBytes();  // Get image data
+        byte[] imageBytes = image.getBytes();
 
-        // Create a new gallery instance
         gallery Gallery = new gallery();
         Gallery.setTitle(title);
         Gallery.setPostSlug(postSlug);
@@ -77,19 +75,15 @@ public class galleryController {
         Gallery.setStatus(status);
         Gallery.setimage(imageBytes);
         Gallery.setContent(content);  
-        // Store image as byte array
-
-        // Save the product in MongoDB
+        
         gallery savedGallery = GalleryService.addGallery(Gallery);
 
-        // Return a response
         Map<String, Object> response = new HashMap<>();
         response.put("success", true);
         response.put("product", savedGallery);
         
         return ResponseEntity.ok(response);
     }
-    //////////////////////////////////////////////////////////////////
 
     @PutMapping("/{id}")
     public ResponseEntity<gallery> updategallery(@PathVariable String id, @RequestBody gallery GalleryDetails) {
