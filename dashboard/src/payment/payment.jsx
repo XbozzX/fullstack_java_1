@@ -76,9 +76,18 @@ const Payment = () => {
 
             {filteredProduct && (
                 <div className="product-details">
-                    <img src={filteredProduct.imageAsBase64 || filteredProduct.photo} alt={filteredProduct.title} />
+                    <img src={`data:image/jpg;base64,${filteredProduct.imageStore}`} 
+                        alt={filteredProduct.title}                      
+                        className="img-fluid"
+                        style={{
+                        width: "300px",
+                        height: "300px",
+                        // objectFit: "cover",
+                        borderRadius: "8px",
+                        marginBottom: "10px",
+                    }}/>
                     <h3>{filteredProduct.title}</h3>
-                    <p>RM{filteredProduct.tag}</p>
+                    <p>RM {filteredProduct.tag}</p>
                 </div>
             )}
             <h2>Payment Page</h2>
