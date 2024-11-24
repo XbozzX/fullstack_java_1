@@ -91,10 +91,6 @@ public void setStatus(String status) {
   this.status = status;
 }
 
-public String getPlace(){
-  return place;
-}
-
 public String getDate(){
   return date;
 }
@@ -109,6 +105,10 @@ public String getImage() {
 
 public void setImage(String image) {
   this.image = image;
+}
+
+public String getPlace(){
+  return place;
 }
 
 public void setPlace(String place) {
