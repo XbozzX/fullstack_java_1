@@ -1,11 +1,11 @@
-import React from "react";
+import React,  { useEffect, useState } from "react";
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 
 const API_BASE_URL = 'http://localhost:8082';
 
-export const Team = (props) => {
+export const Team = () => {
   const token = localStorage.getItem('jwtToken');
   const username = localStorage.getItem('userName');
   const [Users, setUsers] = useState([]);
