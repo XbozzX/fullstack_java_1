@@ -56,8 +56,8 @@ export const Features = () => {
                     alt={d.title}
                     className="img-fluid"
                     style={{
-                      width: "150px",
-                      height: "150px",
+                      width: "300px",
+                      height: "250px",
                       objectFit: "cover",
                       borderRadius: "8px",
                       marginBottom: "10px",
@@ -65,9 +65,7 @@ export const Features = () => {
                   />
                 )}
                 <h3>{d.title}</h3>
-                <p>Date: <span>{d.date}</span></p>
-                <p>Status: <span>{d.status}</span></p>
-                <p>Tag: <span>{d.tag}</span></p>
+                <p><bold><span>{d.tag}</span></bold></p>
               </div>
             ))
           ) : (
