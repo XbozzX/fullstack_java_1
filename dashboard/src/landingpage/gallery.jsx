@@ -1,10 +1,31 @@
-import { Image } from "./image";
-import React from "react";
-import Landing from "./landing.jsx";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+ // Import the CSS file
+
+axios.defaults.withCredentials = true;
+
+const API_BASE_URL = 'http://localhost:8082';
 
 export const Gallery = () => {
-  if(!Landing){
-    return<div>Loading...</div>; //Loading state
+  const token = localStorage.getItem('jwtToken');
+  const [gallery, setGallery] = useState([]);
+
+  useEffect(() => {
+    // Fetch all gallery from the API
+    axios.get(`${API_BASE_URL}/api/Gallery`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(response => {
+        setGallery(response.data);
+      })
+      .catch(error => console.error('Error fetching gallery', error));
+  }, [token]);
+
+  if (!gallery.length) {
+    return <div>Loading...</div>; // Loading State
   }
 
   return (
@@ -13,28 +34,32 @@ export const Gallery = () => {
         <div className="section-title">
           <h2>Gallery</h2>
           <p>
-          "Browse our gallery to see our IT services"
+            "Browse our gallery to see our IT services"
           </p>
         </div>
         <div className="row">
           <div className="portfolio-items">
-             {/* //GET DATA FROM DB */}
-            {/* original: props.data */}
-            {Landing.backGalaleryData
-                //orignal: props.data
-              ? Landing.backGalaleryData.map((d, i) => (
-                  <div
-                    key={`${d.title}-${i}`}
-                    className="col-sm-6 col-md-4 col-lg-4"
-                  >
-                    <Image
-                      title={d.title}
-                      largeImage={d.largeImage}
-                      smallImage={d.smallImage}
+            {gallery.length > 0 ? (
+              gallery.map((d, i) => (
+                <div key={`${d.title}-${i}`} className="col-sm-6 col-md-4 col-lg-4">
+                  {d.image && (
+                    <img
+                      src={`data:image/jpg;base64,${d.image}`}
+                      alt={d.title}
+                      className="img-fluid"
+                      style={{ width: '150px', height: '150px' }}
                     />
-                  </div>
-                ))
-              : "404 not found"}
+                  )}
+                  <h3>{d.title}</h3>
+                  <p>Date: <span>{d.date}</span></p>
+                  <p>Status: <span>{d.status}</span></p>
+                  <p className="tag">Tag: <span>{d.tag}</span></p>
+                  <p className="place">Textplace: <span>{d.place}</span></p>
+                </div>
+              ))
+            ) : (
+              <p>404 not found</p>
+            )}
           </div>
         </div>
       </div>

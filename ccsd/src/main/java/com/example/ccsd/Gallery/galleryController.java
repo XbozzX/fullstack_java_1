@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,16 @@ public class galleryController {
 
     @GetMapping
     public List<gallery> getAllGallerys() {
-        return GalleryService.getAllGallerys();
+        List<gallery> galleryList = GalleryService.getAllGallerys();
+        
+
+        return galleryList.stream()
+        .map(gallery -> {
+                // Add Base64 encoded image to each
+            gallery.setImage64String(gallery.getImageAsBase64());
+            return gallery;
+        })
+        .collect(Collectors.toList()); 
     }
 
     @GetMapping("/{id}")
