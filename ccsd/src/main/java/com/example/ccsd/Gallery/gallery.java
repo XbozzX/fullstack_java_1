@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Gallery")
 public class gallery {
 
-    //field
     @Id
     private String id;
     private String place;
@@ -24,7 +23,6 @@ public class gallery {
     private byte[] image;
     private String image64String;
     
-    //Constructors
     public gallery(){}
 
     public gallery
@@ -55,12 +53,10 @@ public class gallery {
         return this.image64String;  // Return Base64 string
     }
 
-    //getter method
     public String getId(){
         return id;
     }
 
-    //setter method
     public void setId(String id){
         this.id = id;
     }
