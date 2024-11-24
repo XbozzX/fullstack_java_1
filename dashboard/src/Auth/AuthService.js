@@ -7,17 +7,26 @@ const API_BASE_URL = 'http://localhost:8082';
 const AuthService = {
     async login(email, password) {
       try {
-        const response = await axios.post(`${API_BASE_URL}/api/users`, {
-            email,
-            password,
+        // const response = await axios.post(`${API_BASE_URL}/api/users`, {
+        //     email,
+        //     password,
             
-        },
+        // },
+
+        const response = await axios.get(
+          `${API_BASE_URL}/api/users`, // Use the correct endpoint for sign-in
+          { email, password }, // Pass email and password in the request body
+
+
+
         {
               headers: {
               'Content-Type': 'application/json',
             },
           }
         );
+
+        
   
         if (response.status === 200) {
           // Store the JWT token in localStorage

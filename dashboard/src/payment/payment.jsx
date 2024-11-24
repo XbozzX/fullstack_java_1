@@ -16,25 +16,29 @@ const Payment = () => {
     const token = localStorage.getItem('jwtToken');
     const username = localStorage.getItem('userName');
     const [products, setProducts] = useState([]);
+    const [filteredProduct, setFilteredProduct] = useState(null);
     const API_BASE_URL = 'http://localhost:8082';
 
     useEffect(() => {
-      // Fetch all products from the API
-      fetch( `${API_BASE_URL}/api/products`,
-  
-        {
-          // request headers
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          }
-        }) // Your backend API URL
-        .then(response => response.json())
-        .then(data => {
-          setProducts(data);
+        // Fetch all products from the API
+        fetch(`${API_BASE_URL}/api/products`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
         })
-        .catch(error => console.error('Error fetching products:', error));
-    }, []);
+            .then((response) => response.json())
+            .then((data) => {
+                setProducts(data);
+                // Filter product based on postSlug
+                const product = data.find((item) => item.postSlug === productSlug);
+                if (product) {
+                    setFilteredProduct(product);
+                    setAmount(product.price); // Assuming the product has a price field
+                }
+            })
+            .catch((error) => console.error('Error fetching products:', error));
+    }, [productSlug, token]);
 
     
 
@@ -60,13 +64,21 @@ const Payment = () => {
         navigate("/");
     };
 
-    return (
+    return (        
         <div className="payment-container">
-            {product && (
+            {filteredProduct ? (
                 <div className="product-details">
-                    <img src={product.photo} alt={product.title} />
-                    <h3>{product.title}</h3>
-                    <p>{product.description}</p>
+                   
+                </div>
+            ) : (
+                <p>Loading product details...</p>
+            )}
+
+            {filteredProduct && (
+                <div className="product-details">
+                    <img src={filteredProduct.imageAsBase64 || filteredProduct.photo} alt={filteredProduct.title} />
+                    <h3>{filteredProduct.title}</h3>
+                    <p>RM{filteredProduct.tag}</p>
                 </div>
             )}
             <h2>Payment Page</h2>
