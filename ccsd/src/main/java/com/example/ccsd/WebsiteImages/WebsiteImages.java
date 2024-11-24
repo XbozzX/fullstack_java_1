@@ -83,7 +83,7 @@ public class WebsiteImages {
     }
 
     public String getPostSlug() {
-        return title;
+        return postSlug;
     }
 
     public void setPostSlug(String postSlug){
