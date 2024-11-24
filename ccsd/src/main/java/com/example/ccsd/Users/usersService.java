@@ -29,6 +29,13 @@ public class usersService {
         return userOptional.orElse(null); // Return null if user not found
     }
 
+     // Method to get a user by email //sign in
+     public users getUserByEmail(String email) {
+        Optional<users> userOptional = usersRepository.findById(email);
+        return userOptional.orElse(null); // Return null if user not found
+    }
+
+
     // Getting all users
     public List<users> getAllUsers() {
         return usersRepository.findAll();
@@ -39,10 +46,10 @@ public class usersService {
         return usersRepository.findById(userId);
     }
 
-    //getting single user by email
-    public Optional<users> getUserByEmail(String email) {
-        return usersRepository.findById(email);
-    }
+    // //getting single user by email
+    // public Optional<users> getUserByEmail(String email) {
+    //     return usersRepository.findById(email);
+    // }
 
 
     // Creating new data in repository
@@ -121,6 +128,7 @@ public class usersService {
         }
     }
 
-
+    
+ 
     
 }

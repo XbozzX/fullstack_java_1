@@ -203,6 +203,43 @@ public class usersController {
     //     // You can also associate it with other data in your Ads object
     // }
 
+    // @PostMapping("/signin")
+    // public ResponseEntity<?> signIn(@RequestBody users signInRequest) {
+    //     boolean isValidUser = usersService.getUserByEmailPassword(users.getEmail(), users.getPassword());
+
+    //     if (isValidUser ) {
+          
+
+    //          // Return a success response with a redirection URL
+    //          Map<String, String> response = new HashMap<>();
+    //          response.put("redirectUrl", "http://localhost:3000/dashboard-admin");
+    //          return ResponseEntity.ok(response);
+    //     } else {
+    //         // Return an error response
+    //         return ResponseEntity.status(401).body("Invalid email or password.");
+    //     }
+    // }
+
+    @PostMapping("/signin")
+public ResponseEntity<?> signIn(@RequestBody users signInRequest) {
+    // Use the service to fetch the user by email
+    users existingUser = usersService.getUserByEmail(signInRequest.getEmail());
+    
+    // Check if the user exists and passwords match
+    if (existingUser != null && existingUser.getPassword().equals(signInRequest.getPassword())) {
+        // If valid, prepare the redirection URL
+        Map<String, String> response = new HashMap<>();
+        response.put("redirectUrl", "http://localhost:3000/dashboard-admin");
+        return ResponseEntity.ok(response);
+    } else {
+        // Return an error response for invalid credentials
+        return ResponseEntity.status(401).body("Invalid email or password.");
+    }
+}
+ 
+
+}
+
 
     
-}
+

@@ -12,7 +12,7 @@ const API_BASE_URL = 'http://localhost:8082';
 // firstName, lastName, phone, userName, dob, address, role, email, password, image --tally 
 
 const SaveItemsAdmin = {
-  async addTeamSave(firstName, lastName, phone, userName, dob, address, role, email, password, image ) {
+  async addTeamSave(email, password, firstName, lastName, phone, address, role, userName, dob, image) {
     const token = await localStorage.getItem('jwtToken');
     const username = await localStorage.getItem('userName');
 
