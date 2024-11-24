@@ -13,6 +13,31 @@ const Payment = () => {
     const [product, setProduct] = useState(null);
     const navigate = useNavigate();
 
+    const token = localStorage.getItem('jwtToken');
+    const username = localStorage.getItem('userName');
+    const [products, setProducts] = useState([]);
+    const API_BASE_URL = 'http://localhost:8082';
+
+    useEffect(() => {
+      // Fetch all products from the API
+      fetch( `${API_BASE_URL}/api/products`,
+  
+        {
+          // request headers
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          }
+        }) // Your backend API URL
+        .then(response => response.json())
+        .then(data => {
+          setProducts(data);
+        })
+        .catch(error => console.error('Error fetching products:', error));
+    }, []);
+
+    
+
     // useEffect(() => {
     //     const fetchProduct = async () => {
     //         try {

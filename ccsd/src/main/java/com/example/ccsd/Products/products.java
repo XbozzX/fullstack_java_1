@@ -1,9 +1,8 @@
 package com.example.ccsd.Products;
-// import java.io.File;
-// import java.util.Date;
 
 import java.util.Base64;
 
+import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,6 +12,7 @@ public class products {
     
     //field
     @Id
+    private String id;
     private String author;   
     private String postShortDescription;
     private String tag;
@@ -31,7 +31,8 @@ public class products {
     //Constructors
     public products() {}
 
-    public products(String author, String postShortDescription, String tag, String place, String title, String postSlug, String content, String status, String dateProduct, byte[] imageStore) {
+    public products(String id, String author, String postShortDescription, String tag, String place, String title, String postSlug, String content, String status, String dateProduct, byte[] imageStore) {
+        this.id =id;
         this.author = author;
         this.postShortDescription = postShortDescription;
         this.tag = tag;
@@ -44,19 +45,13 @@ public class products {
         this.imageStore = imageStore;
     }
 
-    public String getImageAsBase64() {
-        return imageStore != null ? Base64.getEncoder().encodeToString(imageStore) : null;
-    }
-
-    public void setImageStore64String(String imageStore64String) {
-        this.imageStore64String = imageStore64String;  // Set Base64 string
-    }
-
-    public String getImageStore64String() {
-        return this.imageStore64String;  // Return Base64 string
-    }
 
     // setter
+
+    public String getId() {
+            return this.id;
+    }
+
     public void setAuthor(String author){
         this.author = author;
     }
@@ -94,6 +89,10 @@ public class products {
 
     public void setImageStore(byte[] imageStore) {
         this.imageStore = imageStore;
+    }
+
+    public void setImageStore64String(String imageStore64String) {
+        this.imageStore64String = imageStore64String;  // Set Base64 string
     }
 
 
@@ -135,6 +134,14 @@ public class products {
 
     public byte[] getImageStore() {
         return this.imageStore;
+    }
+
+    public String getImageAsBase64() {
+        return imageStore != null ? Base64.getEncoder().encodeToString(imageStore) : null;
+    }
+
+    public String getImageStore64String() {
+        return this.imageStore64String;  // Return Base64 string
     }
 
 }
