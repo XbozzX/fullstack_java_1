@@ -24,7 +24,7 @@ public class WebsiteImages {
 
     public WebsiteImages
     (String id,  String place, String postShortDescription, String tag,  String title, String postSlug, String content , String status, String date,  
-      byte[] images )
+      byte[] image )
     {
         this.id = id;
         this.place = place;
@@ -35,7 +35,7 @@ public class WebsiteImages {
         this.content = content;
         this.status = status;
         this.date = date;
-        this.image = images;
+        this.image = image;
 
     }
 
