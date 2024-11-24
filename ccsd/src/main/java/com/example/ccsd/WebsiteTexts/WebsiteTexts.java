@@ -5,7 +5,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "websitetexts")
 public class WebsiteTexts {
   @Id
-  private String id;
+  //private String id;
+  private String author;
   private String postShortDescription;
   private String tag;
   private String title;
@@ -16,10 +17,12 @@ public class WebsiteTexts {
   private String image;
   private String place;
 
+
   public WebsiteTexts(){}
 
-  public WebsiteTexts(String id, String postShortDescription, String tag, String title, String postSlug, String content, String status, String date, String image, String place){
-    this.id = id;
+  public WebsiteTexts(String author, String postShortDescription, String tag, String title, String postSlug, String content, String status, String date, String image, String place){
+   // this.id = id;
+    this.author = author;
     this.postShortDescription = postShortDescription;
     this.tag = tag;
     this.title = title;
@@ -29,14 +32,15 @@ public class WebsiteTexts {
     this.date = date;
     this.image = image;
     this.place = place;
+    
 }
 
-public String getId() {
-    return id;
+public String getAuthor() {
+    return author;
 }
 
-public void setId(String id) {
-    this.id = id;
+public void setAuthor(String author) {
+    this.author = author;
 }
 
 public String getPostShortDescription(){

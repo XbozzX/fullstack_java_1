@@ -1,33 +1,82 @@
-import React from "react";
-import Landing from "./landing.jsx";
+import React , { useEffect, useState }from "react";
 
+
+import axios from 'axios';
+
+axios.defaults.withCredentials = true;
+
+const API_BASE_URL = 'http://localhost:8082';
 
 export const Features = () => {
+  const token = localStorage.getItem('jwtToken');
+  const username = localStorage.getItem('userName');
+  const [WebsiteTexts, setTitle] = useState([]);
 
-if (!Landing){
-  return <div>Loading...</div>; //Loading state
-}  
+
+  useEffect(() => {
+    // Fetch all text from the API
+    fetch( `${API_BASE_URL}/api/website-texts`,
+
+      {
+        // request headers
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        setTitle(data);
+      })
+      .catch(error => console.error('Error fetching website texts:', error));
+  }, []);
+
+  if (!WebsiteTexts) {
+    return <div>Loading...</div>;  // Loading state
+  }
+
   return (
     <div id="features" className="text-center">
       <div className="container">
-        <div className="col-md-10 col-md-offset-1 section-title">
+         <div className="col-md-10 col-md-offset-1 section-title">
           <h2>Features</h2>
-        </div>
+         </div>
         <div className="row">
-          {/* //GET DATA FROM DB */}
-          {/* original: props.data */}
-          {Landing.backTextData
-              // original: props.data
-            ? Landing.backTextData.map((d, i) => (
-                <div key={`${d.title}-${i}`} className="col-xs-6 col-md-3">
+           {/* //GET DATA FROM DB */}
+           {/* original: props.data */}
+          {WebsiteTexts.length > 0
+              //props.data
+            ? WebsiteTexts.map((WebsiteTexts, index) => (
+                <div key={`${WebsiteTexts.name}-${index}`} className="col-md-4">
                   {" "}
-                  <i className={d.icon}></i>
-                  <h3>{d.title}</h3>
-                  <p>{d.text}</p>
+
+                  
+                    <h3>{WebsiteTexts.title}</h3>
+                    <p>{WebsiteTexts.postShortDescription}</p>
+                   
+                  {/*<div className="features-desc">*/}
+                  {/* Display Image */}
+                  {/* {product.imageStore && (
+                    <img
+                      src={`data:image/jpeg;base64,${product.imageStore}`} // Displaying image
+                      alt={product.title}
+                      className="img-fluid"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                  )}
+                  <h3>{product.title}</h3>
+                  <h4>{product.tag}</h4>
+                  <p>{product.postShortDescription}</p>
+                  <p>{product.place}</p>
+                  <p>{product.dateProduct}</p>
+                  <p>{product.status}</p> */}
+                  {/* Add any other fields you need */}
                 </div>
+                
+
               ))
-            : "404 not found..."}
-        </div>  
+            : "loading"}
+        </div>
       </div>
     </div>
   );
