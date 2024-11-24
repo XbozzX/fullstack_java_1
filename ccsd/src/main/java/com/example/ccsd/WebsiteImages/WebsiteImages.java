@@ -1,8 +1,10 @@
 package com.example.ccsd.WebsiteImages;
 
+import java.util.Base64;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 @Document(collection = "WebsiteImage")
 public class WebsiteImages {
     @Id
@@ -16,6 +18,7 @@ public class WebsiteImages {
     private String status;
     private String date;
     private byte [] image;
+    private String image64String;
 
 
 
@@ -24,7 +27,7 @@ public class WebsiteImages {
 
     public WebsiteImages
     (String id,  String place, String postShortDescription, String tag,  String title, String postSlug, String content , String status, String date,  
-      byte[] image )
+      byte[] image)
     {
         this.id = id;
         this.place = place;
@@ -38,6 +41,8 @@ public class WebsiteImages {
         this.image = image;
 
     }
+
+
 
     //getter method
     public String getId(){
@@ -123,6 +128,19 @@ public class WebsiteImages {
     public void setimage(byte[] image){
         this.image = image;
     }
+
+    public String getImageAsBase64(){
+        return image != null ? Base64.getEncoder().encodeToString(image) : null;
+    }
+// Set Base64 string
+    public void setImage64String(String image64String){
+        this.image64String = image64String;
+    }
+ // Return Base64 string
+    public String getImage64String(){
+        return this.image64String;  
+    }
+
 
 
 }
