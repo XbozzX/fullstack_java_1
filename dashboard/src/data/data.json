@@ -116,32 +116,17 @@
     {
       "img": "img/testimonials/01.jpg",
       "text": "NextGen IT helped us get our systems up and running quickly. Their solutions were exactly what we needed to scale our business efficiently.",
-      "name": "Elon Musk"
+      "name": "Mr Okafor"
     },
     {
       "img": "img/testimonials/02.jpg",
       "text": "The team at NextGen IT was incredible in understanding our startup's unique needs. They delivered a seamless solution that boosted our productivity from day one.",
-      "name": "Aimi"
+      "name": "Kentucky M."
     },
     {
       "img": "img/testimonials/03.jpg",
       "text": "Thanks to NextGen IT, we now have a reliable and secure system in place. Their support has been crucial in our growth, and we couldn’t be happier with the results.",
       "name": "Aqil Kamel"
-    },
-    {
-      "img": "img/testimonials/04.jpg",
-      "text": "NextGen IT’s expertise in the latest technologies has helped us stay competitive. Their personalized approach made all the difference for our small business.",
-      "name": "Apiz Kay"
-    },
-    {
-      "img": "img/testimonials/05.jpg",
-      "text": "As a new business, we needed fast, cost-effective solutions. NextGen IT delivered exactly that, helping us move forward with confidence.",
-      "name": "Farisha"
-    },
-    {
-      "img": "img/testimonials/06.jpg",
-      "text": "Working with NextGen IT was a game-changer for our startup. Their support and technology solutions have enabled us to focus on growing our business without worrying about IT issues.",
-      "name": "Afham"
     }
   ],
 
@@ -171,9 +156,9 @@
 
 
   "Contact": {
-    "address": "4321 California St, San Francisco, CA 12345 ",
-    "phone": "+1 123 456 1234",
-    "email": "info@company.com",
+    "address": "Laman Norsham,Tasik Biru Kundang 47000 Sungai Buloh",
+    "phone": "+60 010 456 1234",
+    "email": "java@company.com",
     "facebook": "fb.com",
     "twitter": "twitter.com",
     "youtube": "youtube.com"
