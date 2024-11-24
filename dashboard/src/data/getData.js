@@ -118,7 +118,7 @@ const GetData = {
         {
           // request headers
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json', 
             Authorization: `Bearer ${token}`,
           }
         }
@@ -208,17 +208,17 @@ const GetData = {
     
   },
 
-  async getProduct(slug) {
-    const token = await localStorage.getItem('jwtToken');
+  async getProduct(id) {
+
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL}/api/product/${slug}`,
+            `${API_BASE_URL}/api/products/${id}`,
             {
                 // request headers
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
+    
                 }
             }
         );

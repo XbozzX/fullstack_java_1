@@ -41,47 +41,34 @@ const AddWebsiteText = () => {
     const navigate = useNavigate();
     const [openAiImage, setOpenAiImage] = useState(false);
 
-
-    const functionOpenAiImage=() =>{
-        setOpenAiImage(true);
-    }
-    const functionCloseAiImage=() =>{
-        setOpenAiImage(false);
-    }
    
     const handleChangeplace = (event) => {
         setPlace(event.target.value);
       };
    
-
-
     const editor = useRef(null)
     const [content, setContent] = useState(null);
-
 
     const handleChange = (event) => {
         setStatus(event.target.value);
       };
      
 
-
-     
-
-
     const handleImageChange = (event) => {
-        const selectedImage = event.target.files[0];
+        // const selectedImage = event.target.files[0];
+        const selectedImage = event.target.value;
         setImage(selectedImage);
     };
 
 
     const handleAddBlog = async (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
-     
+        
         try {
           const success = await SaveItemsAdmin.addWebsiteTextAdmin( postShortDescription, tag, title, postSlug, content, status, date, image, place);
          
           if (success) {
-            navigate("/api/website-texts");
+            navigate("/website-components-admin");
           } else {
             // Handle login failure and display an error message to the user
             alert("Error Saving data");
@@ -101,7 +88,7 @@ const AddWebsiteText = () => {
 
 
     <Box>
-        <Dialog open={openAiImage} fullWidth maxWidth="lg">
+        {/* <Dialog open={openAiImage} fullWidth maxWidth="lg">
             <DialogTitle> AI Image Generator or Edit </DialogTitle>
             <DialogContent>
                 <Stack spacing={2} margin={2}>
@@ -113,73 +100,13 @@ const AddWebsiteText = () => {
                 <Button color='success' variant='contained'>Use Image</Button>
                 <Button color='error' variant='contained' onClick={functionCloseAiImage}>Close</Button>
             </DialogActions>
-        </Dialog>
-        <Header title="Add Website Text" subtitle="Please Fill All the Fields" />
+        </Dialog> */}
+        <Header title="Add Website Text for About" subtitle="Please Fill All the Fields" />
            
         <Box sx={{ display: 'flex', flexWrap: 'wrap' }} component="form" noValidate onSubmit={handleAddBlog} >
-                <TextField
-                onChange={(e) => setTitle(e.target.value)}
-                label="Enter Title"
-                id="title"
-                sx={{ m: 1, width: '30.5%' }}
-                variant="filled"
-                />
-
-
-                <FormControl sx={{ m: 1, width: '15.5%' }} variant="filled">
-                    <InputLabel id="status">Status</InputLabel>
-                    <Select
-                        labelId="status"
-                        id="status"
-                        value={status}
-                        label="status"
-                        onChange={handleChange}
-                    >
-                        <MenuItem value={0}>Draft</MenuItem>
-                        <MenuItem value={1}>Publish</MenuItem>
-                    </Select>
-                </FormControl>
-                <FormControl sx={{ m: 1, width: '15.5%' }} variant="filled">
-                    <InputLabel id="place">Text Location</InputLabel>
-                    <Select
-                        labelId="place"
-                        id="place"
-                        value={place}
-                        label="place"
-                        onChange={handleChangeplace}
-                    >
-                        <MenuItem value={1}>Features</MenuItem>
-                        <MenuItem value={2}>About</MenuItem>
-
-
-                    </Select>
-                </FormControl>
-
-
-
-
-                <FormControl sx={{ m: 1, width: '60%' }} variant="filled">
-                <InputLabel htmlFor="filled-adornment-address">Tags</InputLabel>
-                <FilledInput
-                   onChange={(e) => setTag(e.target.value)}
-                    id='tag'
-                    type='text'
-                    endAdornment = {
-                        <InputAdornment position='end'>
-                            
-                            
-                        
-                      
-                        </InputAdornment>
-                    }
-                   
-                >
-                </FilledInput>
-                </FormControl>
-
-                
-                <FormControl sx={{ m: 1, width: '93%' }} variant="filled">
-                <InputLabel htmlFor="filled-adornment-short-description">Short Description</InputLabel>
+        
+        <FormControl sx={{ m: 1, width: '93%' }} variant="filled">
+                <InputLabel htmlFor="filled-adornment-short-description">Enter About</InputLabel>
                 <FilledInput
                    onChange={(e) => setPostShortDescription(e.target.value)}
                     id='short-description'
@@ -195,13 +122,59 @@ const AddWebsiteText = () => {
                    
                 >
                 </FilledInput>
-
-
+                </FormControl>
+                
+                <FormControl sx={{ m: 1, width: '15.5%' }} variant="filled">
+                    <InputLabel id="status">Status</InputLabel>
+                    <Select
+                        labelId="status"
+                        id="status"
+                        value={status}
+                        label="status"
+                        onChange={handleChange}
+                    >
+                        <MenuItem value={0}>Draft</MenuItem>
+                        <MenuItem value={1}>Publish</MenuItem>
+                    </Select>
                 </FormControl>
 
+                <FormControl sx={{ m: 1, width: '15.5%' }} variant="filled">
+                    <InputLabel id="place">Text Location</InputLabel>
+                    <Select
+                        labelId="place"
+                        id="place"
+                        value={place}
+                        label="place"
+                        onChange={handleChangeplace}
+                    >
+                        <MenuItem value={0}>About</MenuItem>
 
-              
+                    </Select>
+                </FormControl>
+                
 
+                <TextField
+                onChange={(e) => setTitle(e.target.value)}
+                label="Why Choose Us (Point 1)"
+                id="title"
+                type='text'
+                multiline
+                rows={3}
+                sx={{ m: 1, width: '60%' }}
+                variant="filled"
+                />
+
+                <TextField
+                onChange={(e) => setTag(e.target.value)}
+                label="Why Choose Us (Point 2)"
+                id="title"
+                type='text'
+                multiline
+                rows={3}
+                sx={{ m: 1, width: '60%' }}
+                variant="filled"
+                />
+           
                 <Button
                 type="submit"
                 sx={{ m: 1, width: '46%' }}
@@ -211,7 +184,6 @@ const AddWebsiteText = () => {
               >
                 Save
               </Button>
-
 
         </Box>
     </Box>

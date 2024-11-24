@@ -5,21 +5,24 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "websitetexts")
 public class WebsiteTexts {
   @Id
-  private String id;
-  private String title;
-  private String status;
-  private String place;
-  private String tag;
+  //private String id;
+  private String author;
   private String postShortDescription;
+  private String tag;
+  private String title;
   private String postSlug;
   private String content;
+  private String status;
   private String date;
-  private byte[] image;
+  private String image;
+  private String place;
+
 
   public WebsiteTexts(){}
 
-  public WebsiteTexts(String postShortDescription, String tag, String title, String postSlug, String content, String status, String date, byte[] image, String place){
-    this.id = id;
+  public WebsiteTexts(String author, String postShortDescription, String tag, String title, String postSlug, String content, String status, String date, String image, String place){
+   // this.id = id;
+    this.author = author;
     this.postShortDescription = postShortDescription;
     this.tag = tag;
     this.title = title;
@@ -29,14 +32,15 @@ public class WebsiteTexts {
     this.date = date;
     this.image = image;
     this.place = place;
+    
 }
 
-public String getId() {
-    return id;
+public String getAuthor() {
+    return author;
 }
 
-public void setId(String id) {
-    this.id = id;
+public void setAuthor(String author) {
+    this.author = author;
 }
 
 public String getPostShortDescription(){
@@ -87,10 +91,6 @@ public void setStatus(String status) {
   this.status = status;
 }
 
-public String getPlace(){
-  return place;
-}
-
 public String getDate(){
   return date;
 }
@@ -99,12 +99,16 @@ public void setDate(String date) {
   this.date = date;
 }
 
-public byte[] getImage() {
+public String getImage() {
   return this.image;
 }
 
-public void setImage(byte[] image) {
+public void setImage(String image) {
   this.image = image;
+}
+
+public String getPlace(){
+  return place;
 }
 
 public void setPlace(String place) {

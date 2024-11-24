@@ -1,33 +1,79 @@
-import React from "react";
-import Landing from "./landing.jsx";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
+const API_BASE_URL = "http://localhost:8082";
 
 export const Features = () => {
+  const token = localStorage.getItem("jwtToken");
 
-if (!Landing){
-  return <div>Loading...</div>; //Loading state
-}  
+  // State for Website Images
+  const [websiteImages, setWebsiteImages] = useState([]);
+  // Loading state
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch Website Images
+    const fetchWebsiteImages = async () => {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/api/WebsiteImage`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setWebsiteImages(response.data); // Set images data
+      } catch (error) {
+        console.error("Error fetching website images:", error);
+      } finally {
+        setIsLoading(false); // Set loading to false
+      }
+    };
+
+    fetchWebsiteImages();
+  }, [token]);
+
+  // Render Loading State
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div id="features" className="text-center">
       <div className="container">
+        {/* Section Title */}
         <div className="col-md-10 col-md-offset-1 section-title">
           <h2>Features</h2>
         </div>
+
+        {/* Display Website Images */}
         <div className="row">
-          {/* //GET DATA FROM DB */}
-          {/* original: props.data */}
-          {Landing.backTextData
-              // original: props.data
-            ? Landing.backTextData.map((d, i) => (
-                <div key={`${d.title}-${i}`} className="col-xs-6 col-md-3">
-                  {" "}
-                  <i className={d.icon}></i>
-                  <h3>{d.title}</h3>
-                  <p>{d.text}</p>
-                </div>
-              ))
-            : "404 not found..."}
-        </div>  
+          {websiteImages.length > 0 ? (
+            websiteImages.map((d, i) => (
+              <div key={`image-${i}`} className="col-md-4">
+                {d.image && (
+                  <img
+                    src={`data:image/jpeg;base64,${d.image}`} // Base64 image
+                    alt={d.title}
+                    className="img-fluid"
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                      marginBottom: "10px",
+                    }}
+                  />
+                )}
+                <h3>{d.title}</h3>
+                <p>Date: <span>{d.date}</span></p>
+                <p>Status: <span>{d.status}</span></p>
+                <p>Tag: <span>{d.tag}</span></p>
+              </div>
+            ))
+          ) : (
+            <p>No images found</p>
+          )}
+        </div>
       </div>
     </div>
   );

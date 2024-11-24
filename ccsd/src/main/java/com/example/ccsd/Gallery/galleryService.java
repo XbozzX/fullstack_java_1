@@ -23,7 +23,7 @@ public class galleryService {
         return GalleryRepository.findAll();
     }
 
-    // Getting single boks
+    // Getting single 
     public Optional<gallery> getGalleryById(String id) {
         return GalleryRepository.findById(id);
     }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +25,20 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/api/WebsiteImage")
 public class WebsiteImagesController {
+
        @Autowired
     private WebsiteImagesService websiteImagesService;
 
     @GetMapping
     public List<WebsiteImages> getAllWebsiteImageses() {
-        return websiteImagesService.getAllWebsiteImageses();
+        List<WebsiteImages> websiteImagesList = websiteImagesService.getAllWebsiteImageses();
+        return websiteImagesList.stream()
+            .map((websiteImages) -> {
+
+                websiteImages.setImage64String(websiteImages.getImage64String());
+                return websiteImages;
+            })
+            .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
@@ -40,7 +49,7 @@ public class WebsiteImagesController {
     }
 
           @PostMapping
-    public ResponseEntity<Map<String, Object>> addProduct(
+    public ResponseEntity<Map<String, Object>> addWebsiteImages(
             @RequestParam("title") String title,
             @RequestParam("postShortDescription") String postShortDescription,
             @RequestParam("date") String date,

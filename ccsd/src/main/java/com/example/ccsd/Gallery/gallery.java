@@ -1,12 +1,15 @@
 package com.example.ccsd.Gallery;
 
 
+import java.util.Base64;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Document(collection = "Gallery")
 public class gallery {
+
     @Id
     private String id;
     private String place;
@@ -18,6 +21,7 @@ public class gallery {
     private String status;
     private String date;
     private byte[] image;
+    private String image64String;
     
     public gallery(){}
 
@@ -35,16 +39,24 @@ public class gallery {
         this.status = status;
         this.date = date;
         this.image = image;
-
     }
 }
+    public String getImageAsBase64(){
+        return image != null ? Base64.getEncoder().encodeToString(image) : null;
+    }
 
-    //getter method
+    public void setImage64String(String image64String) {
+        this.image64String = image64String;   // Set Base64 string
+    }
+
+    public String getImage64String() {
+        return this.image64String;  // Return Base64 string
+    }
+
     public String getId(){
         return id;
     }
 
-    //setter method
     public void setId(String id){
         this.id = id;
     }
