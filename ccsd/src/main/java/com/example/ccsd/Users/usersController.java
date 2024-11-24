@@ -39,18 +39,18 @@ public class usersController {
 
     // }
 
-     // Endpoint to get all users
-     @GetMapping
-     public ResponseEntity<List<users>> getAllUsersTeam() {
-         List<users> usersList = usersService.getAllUsers();
-         return ResponseEntity.ok(usersList);
-     }
+    //  // Endpoint to get all users
+    //  @GetMapping
+    //  public ResponseEntity<List<users>> getAllUsersTeam() {
+    //      List<users> usersList = usersService.getAllUsers();
+    //      return ResponseEntity.ok(usersList);
+    //  }
  
    
 
     
     @GetMapping
-public List<users> getAllUsers() {
+    public List<users> getAllUsers() {
     List<users> usersList = usersService.getAllUsers();  // Get all products
 
     // Process each users in the list
@@ -61,7 +61,7 @@ public List<users> getAllUsers() {
                 return users;
             })
             .collect(Collectors.toList());  // Collect the processed users back into a list
-}
+    }
 
     // get user by id 
     @GetMapping("/{id}")
