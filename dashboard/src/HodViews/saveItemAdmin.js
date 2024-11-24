@@ -235,7 +235,7 @@ const SaveItemsAdmin = {
         formData,
         {
           headers: {
-            'Content-Type': 'multipart/form-data', // Set content type to multipart/form-data for file uploads
+            'Content-Type': 'application/json', 
             Authorization: `Bearer ${token}`,
           },
         }

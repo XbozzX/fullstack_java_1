@@ -149,8 +149,6 @@ const AddWebsiteText = () => {
                         onChange={handleChangeplace}
                     >
                         <MenuItem value={0}>Features</MenuItem>
-                        <MenuItem value={1}>About</MenuItem>
-
 
                     </Select>
                 </FormControl>
