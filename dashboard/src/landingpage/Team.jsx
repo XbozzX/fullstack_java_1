@@ -1,9 +1,36 @@
 import React from "react";
-import Landing from "./landing.jsx";
+import axios from 'axios';
+
+axios.defaults.withCredentials = true;
+
+const API_BASE_URL = 'http://localhost:8082';
 
 export const Team = (props) => {
+  const token = localStorage.getItem('jwtToken');
+  const username = localStorage.getItem('userName');
+  const [Users, setUsers] = useState([]);
 
-  if (!Landing) {
+  useEffect(() => {
+    // Fetch all products from the API
+    fetch( `${API_BASE_URL}/api/users`,
+
+      {
+        // request headers
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }
+      }) // Your backend API URL
+      .then(response => response.json())
+      .then(data => {
+        setUsers(data);
+      })
+      .catch(error => console.error('Error fetching user:', error));
+  }, []);
+
+  /////////////////////////
+
+  if (!Users) {
     return <div>Loading...</div>;  // Loading state
   }
 
@@ -20,16 +47,16 @@ export const Team = (props) => {
         <div id="row">
            {/* //GET DATA FROM DB */}
           {/* //original: props.data */}
-          {Landing.backTextData
+          {Users.length > 0
               //original: props.data
-            ? Landing.backTextData.map((d, i) => (
-                <div key={`${d.name}-${i}`} className="col-md-3 col-sm-6 team">
+            ? Users.map((Users, index) => (
+                <div key={`${Users.name}-${index}`} className="col-md-3 col-sm-6 team">
                   <div className="thumbnail">
                     {" "}
-                    <img src={d.img} alt="..." className="team-img" />
+                    <img src={Users.img} alt="..." className="team-img" />
                     <div className="caption">
-                      <h4>{d.name}</h4>
-                      <p>{d.job}</p>
+                      <h4>{Users.name}</h4>
+                      <p>{Users.job}</p>
                     </div>
                   </div>
                 </div>
