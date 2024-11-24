@@ -101,7 +101,7 @@ const AddWebsiteText = () => {
 
 
     <Box>
-        <Dialog open={openAiImage} fullWidth maxWidth="lg">
+        {/* <Dialog open={openAiImage} fullWidth maxWidth="lg">
             <DialogTitle> AI Image Generator or Edit </DialogTitle>
             <DialogContent>
                 <Stack spacing={2} margin={2}>
@@ -113,7 +113,7 @@ const AddWebsiteText = () => {
                 <Button color='success' variant='contained'>Use Image</Button>
                 <Button color='error' variant='contained' onClick={functionCloseAiImage}>Close</Button>
             </DialogActions>
-        </Dialog>
+        </Dialog> */}
         <Header title="Add Website Text" subtitle="Please Fill All the Fields" />
            
         <Box sx={{ display: 'flex', flexWrap: 'wrap' }} component="form" noValidate onSubmit={handleAddBlog} >
@@ -148,8 +148,8 @@ const AddWebsiteText = () => {
                         label="place"
                         onChange={handleChangeplace}
                     >
-                        <MenuItem value={1}>Features</MenuItem>
-                        <MenuItem value={2}>About</MenuItem>
+                        <MenuItem value={0}>Features</MenuItem>
+                        <MenuItem value={1}>About</MenuItem>
 
 
                     </Select>
