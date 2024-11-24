@@ -55,12 +55,12 @@ export const Services = () => {
                       src={`data:image/jpeg;base64,${product.imageStore}`} // Displaying image
                       alt={product.title}
                       className="img-fluid"
-                      style={{ width: '150px', height: '150px' }}
+                      style={{ width: '350px', height: '300px' }}
                     />
 
                   )}
                     <h3>{product.title}</h3>
-                    <h4>{product.tag}</h4>
+                    <h4>RM{product.tag}</h4>
                     <p>{product.postShortDescription}</p>
                     <a href={`payment/${product.postSlug}`}>
                       <button

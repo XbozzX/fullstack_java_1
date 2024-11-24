@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
- // Import the CSS file
 
 axios.defaults.withCredentials = true;
 
@@ -47,14 +46,13 @@ export const Gallery = () => {
                       src={`data:image/jpg;base64,${d.image}`}
                       alt={d.title}
                       className="img-fluid"
-                      style={{ width: '150px', height: '150px' }}
+                      style={{ width: '300px', height: '250px' }}
                     />
                   )}
                   <h3>{d.title}</h3>
                   <p>Date: <span>{d.date}</span></p>
                   <p>Status: <span>{d.status}</span></p>
                   <p className="tag">Tag: <span>{d.tag}</span></p>
-                  <p className="place">Textplace: <span>{d.place}</span></p>
                 </div>
               ))
             ) : (
