@@ -33,15 +33,15 @@ public class WebsiteTextsService {
             // Get from database
 
             WebsiteTexts websiteTexts = textOpt.get();
-            websiteTexts.setTitle(textDetails.getTitle());
-            websiteTexts.setStatus(textDetails.getStatus());
-            websiteTexts.setPlace(textDetails.getPlace());
-            websiteTexts.setTag(textDetails.getTag());
             websiteTexts.setPostShortDescription(textDetails.getPostShortDescription());
+            websiteTexts.setTag(textDetails.getTag());
+            websiteTexts.setTitle(textDetails.getTitle());
             websiteTexts.setPostSlug(textDetails.getPostSlug());
             websiteTexts.setContent(textDetails.getContent());
+            websiteTexts.setStatus(textDetails.getStatus());
             websiteTexts.setDate(textDetails.getDate());
             websiteTexts.setImage(textDetails.getImage());
+            websiteTexts.setPlace(textDetails.getPlace());
             return websiteTextsRepository.save(websiteTexts);
 
         }

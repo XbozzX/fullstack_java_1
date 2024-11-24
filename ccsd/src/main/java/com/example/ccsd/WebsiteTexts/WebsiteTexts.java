@@ -6,19 +6,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class WebsiteTexts {
   @Id
   private String id;
-  private String title;
-  private String status;
-  private String place;
-  private String tag;
   private String postShortDescription;
+  private String tag;
+  private String title;
   private String postSlug;
   private String content;
+  private String status;
   private String date;
-  private byte[] image;
+  private String image;
+  private String place;
 
   public WebsiteTexts(){}
 
-  public WebsiteTexts(String postShortDescription, String tag, String title, String postSlug, String content, String status, String date, byte[] image, String place){
+  public WebsiteTexts(String id, String postShortDescription, String tag, String title, String postSlug, String content, String status, String date, String image, String place){
     this.id = id;
     this.postShortDescription = postShortDescription;
     this.tag = tag;
@@ -99,11 +99,11 @@ public void setDate(String date) {
   this.date = date;
 }
 
-public byte[] getImage() {
+public String getImage() {
   return this.image;
 }
 
-public void setImage(byte[] image) {
+public void setImage(String image) {
   this.image = image;
 }
 
