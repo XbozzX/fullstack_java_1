@@ -3,7 +3,7 @@ package com.example.ccsd.Users;
 
 
 
-import java.util.Date;
+import java.util.Base64;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -22,6 +22,7 @@ public class users {
     private String email;
     private String password;
     private byte[] profPic;
+    private String imageStore64String;
 
      // Constructors
      public users() {}
@@ -170,7 +171,22 @@ public class users {
      public void setProfPic(byte[] profPic){
          this.profPic = profPic;
      }
- 
+
+     //getter setter imageByte
+
+        public String getImageAsBase64() {
+        return profPic != null ? Base64.getEncoder().encodeToString(profPic) : null;
+    }
+
+    public void setImageStore64String(String imageStore64String) {
+        this.imageStore64String = imageStore64String;  // Set Base64 string
+    }
+
+    public String getImageStore64String() {
+        return this.imageStore64String;  // Return Base64 string
+    }
+
+   
 
     
 }

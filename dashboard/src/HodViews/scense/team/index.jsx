@@ -1,3 +1,5 @@
+//index.jsx
+
 import { Box, Typography, useTheme, Button, Grid } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
@@ -9,7 +11,7 @@ import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import Header from "../../../components/Header";
 import React, { useState, useEffect } from "react";
 import GetItemsAdmin from "../../getItemAdmin";
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 const TeamAdmin = () => {
     const [teamDeatails, setTeamDetails] = useState([]);
@@ -35,15 +37,18 @@ const TeamAdmin = () => {
 
 
     const columns = [
+   
+///////////////////////////
         { field: "id", headerName: "ID" },
         { field: "name", headerName: "NAME", flex: 1, cellClassName: "name-column--cell" },
         { field: "phone", headerName: "PHONE#", flex: 1 },
         { field: "email", headerName: "EMAIL", flex: 1 },
+
         {
             field: "access",
             headerName: "ACCESS",
             flex: 1,
-            renderCell: ({ row: { access } }) => {
+            renderCell: ({ row: { profPic, firstName } }) => {
                 return (
                     <Box
                         width="60%"
@@ -51,30 +56,31 @@ const TeamAdmin = () => {
                         p="5px"
                         justifyContent="center"
                         alignItems="center" // Added for vertical alignment
-                        backgroundColor={
-                            access === "admin"
-                                ? colors.greenAccent[600]
-                                : colors.greenAccent[700]
+
+                        profPic={
+                            <img
+                            src={`data:image/jpeg;base64,${profPic}`} // Displaying image
+                             alt={firstName}
+                             className="img-fluid"
+                            
+                            />
                         }
-                        borderRadius="4px"
                     >
-                        {access === "Teacher" && <AdminPanelSettingsOutlinedIcon />}
-                        {access === "manager" && <SecurityOutlinedIcon />}
-                        {access === "user" && <LockOpenOutlinedIcon />}
+                       
                         <Typography variant="body1" color={colors.grey[100]} sx={{ ml: "5px" }}>
-                            {access}
+
+                        {firstName || "Default Name"}
                         </Typography>
                     </Box>
                 );
             },
         },
         {
-            field: "edit",
-            headerName: "EDIT",
+            field: "delete",
+            headerName: "DELETE",
             flex: 1,
             renderCell: ({ row }) => {
                 return (
-                    <Link to={`/editTeam/${row.id}`} style={{ textDecoration: "none" }}>
                         <Box
                             width="40%"
                             m="0 auto"
@@ -88,13 +94,17 @@ const TeamAdmin = () => {
                             }
                             borderRadius="4px"
                         >
-                            <EditOutlinedIcon />
+
+                            {/* onClick //onclick to delete window ask. */}
+                            {/* //delete onclick  */}
+                            <DeleteOutlinedIcon />
         
                             <Typography variant="body1" color={colors.grey[100]} sx={{ ml: "5px" }}>
-                                Edit
+                                Delete
                             </Typography>
+
                         </Box>
-                    </Link>
+                    
                 );
             },
         },
