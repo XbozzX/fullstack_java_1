@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8082";
+// const API_BASE_URL = "http://localhost:8082";
+const API_BASE_URL = "https://fullstack-java-1.onrender.com"; //cloud
 
 export const Features = () => {
   const token = localStorage.getItem("jwtToken");
@@ -65,7 +66,11 @@ export const Features = () => {
                   />
                 )}
                 <h3>{d.title}</h3>
-                <p><bold><span>{d.tag}</span></bold></p>
+                <p>
+                  <bold>
+                    <span>{d.tag}</span>
+                  </bold>
+                </p>
               </div>
             ))
           ) : (

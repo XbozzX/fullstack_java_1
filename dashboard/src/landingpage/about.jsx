@@ -3,7 +3,8 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
-const API_BASE_URL = "http://localhost:8082";
+// const API_BASE_URL = "http://localhost:8082";
+const API_BASE_URL = "https://fullstack-java-1.onrender.com"; //cloud
 
 export const About = () => {
   const token = localStorage.getItem("jwtToken");
@@ -45,12 +46,14 @@ export const About = () => {
               {WebsiteTexts.map((websiteText, index) => (
                 <div key={`${websiteText.name}-${index}`} className="col-md-12">
                   <p>{websiteText.postShortDescription}</p>
-
                 </div>
               ))}
               <h3>Why Choose Us?</h3>
               {WebsiteTexts.map((websiteText, index) => (
-                <div key={`choose-${websiteText.name}-${index}`} className="col-md-12">
+                <div
+                  key={`choose-${websiteText.name}-${index}`}
+                  className="col-md-12"
+                >
                   <p>{websiteText.title}</p>
                   <p>{websiteText.tag}</p>
                 </div>
