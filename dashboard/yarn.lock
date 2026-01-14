@@ -8156,10 +8156,10 @@ lexical@^0.14.2, lexical@0.14.2:
   resolved "https://registry.npmjs.org/lexical/-/lexical-0.14.2.tgz"
   integrity sha512-Uxe0jD2T4XY/+WKiVgnV6OH/GmsF1I0YStcSuMR3Alfhnv5MEYuCa482zo+S5zOPjB1x9j/b+TOLtZEMArwELw==
 
-lib0@^0.2.86:
-  version "0.2.93"
-  resolved "https://registry.npmjs.org/lib0/-/lib0-0.2.93.tgz"
-  integrity sha512-M5IKsiFJYulS+8Eal8f+zAqf5ckm1vffW0fFDxfgxJ+uiVopvDdd3PxJmz0GsVi3YNO7QCFSq0nAsiDmNhLj9Q==
+lib0@^0.2.99:
+  version "0.2.117"
+  resolved "https://registry.npmjs.org/lib0/-/lib0-0.2.117.tgz"
+  integrity sha512-DeXj9X5xDCjgKLU/7RR+/HQEVzuuEUiwldwOGsHK/sfAfELGWEyTcf0x+uOvCvK3O2zPmZePXWL85vtia6GyZw==
   dependencies:
     isomorphic.js "^0.2.4"
 
@@ -12241,12 +12241,12 @@ yargs@^17.3.1:
     y18n "^5.0.5"
     yargs-parser "^21.1.1"
 
-yjs@>=13.5.22:
-  version "13.6.14"
-  resolved "https://registry.npmjs.org/yjs/-/yjs-13.6.14.tgz"
-  integrity sha512-D+7KcUr0j+vBCUSKXXEWfA+bG4UQBviAwP3gYBhkstkgwy5+8diOPMx0iqLIOxNo/HxaREUimZRxqHGAHCL2BQ==
+yjs@^13.6.29, yjs@>=13.5.22:
+  version "13.6.29"
+  resolved "https://registry.npmjs.org/yjs/-/yjs-13.6.29.tgz"
+  integrity sha512-kHqDPdltoXH+X4w1lVmMtddE3Oeqq48nM40FD5ojTd8xYhQpzIDcfE2keMSU5bAgRPJBe225WTUdyUgj1DtbiQ==
   dependencies:
-    lib0 "^0.2.86"
+    lib0 "^0.2.99"
 
 yn@3.1.1:
   version "3.1.1"
