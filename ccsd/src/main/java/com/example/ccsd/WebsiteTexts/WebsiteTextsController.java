@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 // @CrossOrigin(origins = "http://localhost:3000")
-@CrossOrigin(origins = "https://nextgenit.vercel.app")
+@CrossOrigin(origins = "https://nextgenit.vercel.app/")
 @RestController
 @RequestMapping("/api/website-texts")
 public class WebsiteTextsController {

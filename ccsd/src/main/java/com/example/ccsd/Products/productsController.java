@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 // @CrossOrigin(origins = "http://localhost:3000")
-@CrossOrigin(origins = "https://nextgenit.vercel.app")
+@CrossOrigin(origins = "https://nextgenit.vercel.app/")
 @RestController
 @RequestMapping("/api/products")
 public class productsController {
