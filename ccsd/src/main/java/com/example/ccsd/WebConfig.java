@@ -22,7 +22,8 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:3000")
+                        // .allowedOrigins("http://localhost:3000")
+                        .allowedOrigins("https://nextgenit.vercel.app/")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Allow OPTIONS method
                         .allowedHeaders("*") // Allow all headers
                         .exposedHeaders("Authorization") // In case you need to expose any headers
