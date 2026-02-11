@@ -9,12 +9,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,14 +21,14 @@ import org.springframework.web.multipart.MultipartFile;
 @CrossOrigin(origins = "https://nextgenit.vercel.app")
 @RestController
 @RequestMapping("/api/products")
-public class productsController {
+public class ProductsController {
     
     @Autowired
-    private productsService productsService;
+    private ProductsService productsService;
 
     @GetMapping
-    public List<products> getAllProducts() {
-        List<products> productsList = productsService.getAllProducts();  // Get all products
+    public List<Products> getAllProducts() {
+        List<Products> productsList = productsService.getAllProducts();  // Get all products
 
         // Process each product in the list
         return productsList.stream()
@@ -45,7 +42,7 @@ public class productsController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<products> getProductskById(@PathVariable String id) {
+    public ResponseEntity<Products> getProductskById(@PathVariable String id) {
         return productsService.getProductsById(id) // Get products by slug
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -63,11 +60,13 @@ public class productsController {
                 @RequestParam("status") String status,
                 @RequestParam("image") MultipartFile image) throws IOException {
 
+
+
             // Convert the image to a byte array
             byte[] imageBytes = image.getBytes();  // Get image data
 
             // Create a new Product instance
-            products product = new products();
+            Products product = new Products();
             product.setTitle(title);
             product.setPostSlug(postSlug);
             product.setPostShortDescription(postShortDescription);
@@ -78,7 +77,7 @@ public class productsController {
             product.setImageStore(imageBytes);  // Store image as byte array
 
             // Save the product in MongoDB
-            products savedProduct = productsService.addProducts(product);
+            Products savedProduct = productsService.addProducts(product);
 
             // Return a response
             Map<String, Object> response = new HashMap<>();

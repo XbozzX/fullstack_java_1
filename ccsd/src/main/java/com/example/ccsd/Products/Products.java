@@ -2,13 +2,12 @@ package com.example.ccsd.Products;
 
 import java.util.Base64;
 
-import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Document(collection = "products")
-public class products {
+public class Products {
     
     //field
     @Id
@@ -29,9 +28,9 @@ public class products {
 
 
     //Constructors
-    public products() {}
+    public Products() {}
 
-    public products(String id, String author, String postShortDescription, String tag, String place, String title, String postSlug, String content, String status, String dateProduct, byte[] imageStore) {
+    public Products(String id, String author, String postShortDescription, String tag, String place, String title, String postSlug, String content, String status, String dateProduct, byte[] imageStore) {
         this.id =id;
         this.author = author;
         this.postShortDescription = postShortDescription;
@@ -50,6 +49,10 @@ public class products {
 
     public String getId() {
             return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setAuthor(String author){
