@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./payment.css";
-import GetData from "../data/getData";
 
 const Payment = () => {
   const { productSlug } = useParams();
